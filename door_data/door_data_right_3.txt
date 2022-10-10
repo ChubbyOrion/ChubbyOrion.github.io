@@ -1,0 +1,111 @@
+[INFO] [1665431322.132670549] [data_collection]: Node created!
+[WARN] [1665431328.077371433] [data_collection]: Some subscriptions haven't discovered their publishers yet
+[WARN] [1665431328.077421374] [data_collection]: Rejecting goal request: robot nodes have not been discovered yet
+[WARN] [1665431329.820784229] [data_collection]: Some subscriptions haven't discovered their publishers yet
+[WARN] [1665431329.820837462] [data_collection]: Rejecting goal request: robot nodes have not been discovered yet
+[INFO] [1665431332.558260807] [data_collection]: Sent request to reset pose!
+[INFO] [1665431332.558325664] [data_collection]: Accepting goal request
+[INFO] [1665431332.558665613] [data_collection]: Executing goal
+[INFO] [1665431332.575802276] [data_collection]: Reflexes are enabled on the robot!
+[INFO] [1665431332.576114595] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431332.925886053] [data_collection]: Wall following succeeded!
+[INFO] [1665431332.959173619] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431332,972500204,ir_intensity_side_left,4,1665431332,972500204,ir_intensity_left,5,1665431332,972500204,ir_intensity_front_left,6,1665431332,972500204,ir_intensity_front_center_left,7,1665431332,972500204,ir_intensity_front_center_right,10,1665431332,972500204,ir_intensity_front_right,37,1665431332,972500204,ir_intensity_right,295],Odom,pose,position,x,0.0218538,y,9.58718e-05,z,0.000322813,orientation,x,-0.000702052,y-0.0069398,z,0.00460208,w,0.999965,Twist,linear,x,0.148938,y,0.000138557,z,-7.56406e-06,angular,x,-0.00855838,y,0.00478133,z,0.150999,Hazards,[]
+
+[INFO] [1665431352.925655389] [data_collection]: Wait succeeded!
+[INFO] [1665431352.959323131] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431353.325812750] [data_collection]: Wall following succeeded!
+[INFO] [1665431353.359142469] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431353,387818415,ir_intensity_side_left,3,1665431353,387818415,ir_intensity_left,4,1665431353,387818415,ir_intensity_front_left,6,1665431353,387818415,ir_intensity_front_center_left,6,1665431353,387818415,ir_intensity_front_center_right,9,1665431353,387818415,ir_intensity_front_right,26,1665431353,387818415,ir_intensity_right,285],Odom,pose,position,x,0.100815,y,0.00210171,z,0.00155763,orientation,x,-0.00151548,y-0.00820076,z,0.0338751,w,0.999391,Twist,linear,x,0.185561,y,-0.00256863,z,-3.99123e-05,angular,x,-0.00442112,y,-0.00186586,z,-0.0243488,Hazards,[]
+
+[INFO] [1665431381.125631888] [data_collection]: Wait succeeded!
+[INFO] [1665431381.159284243] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431381.525863315] [data_collection]: Wall following succeeded!
+[INFO] [1665431381.559143394] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431381,580602770,ir_intensity_side_left,0,1665431381,580602770,ir_intensity_left,3,1665431381,580602770,ir_intensity_front_left,2,1665431381,580602770,ir_intensity_front_center_left,5,1665431381,580602770,ir_intensity_front_center_right,7,1665431381,580602770,ir_intensity_front_right,14,1665431381,580602770,ir_intensity_right,201],Odom,pose,position,x,0.184471,y,0.00804788,z,0.00300924,orientation,x,-0.000693907,y-0.0101365,z,0.0655392,w,0.997798,Twist,linear,x,0.165988,y,-0.0109547,z,2.96295e-09,angular,x,-1.86371e-08,y,-6.84331e-09,z,-8.94581e-07,Hazards,[]
+
+[INFO] [1665431403.392353614] [data_collection]: Wait succeeded!
+[INFO] [1665431403.425831852] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431403.759204630] [data_collection]: Wall following succeeded!
+[INFO] [1665431403.792464104] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431403,816088446,ir_intensity_side_left,2,1665431403,816088446,ir_intensity_left,1,1665431403,816088446,ir_intensity_front_left,4,1665431403,816088446,ir_intensity_front_center_left,3,1665431403,816088446,ir_intensity_front_center_right,13,1665431403,816088446,ir_intensity_front_right,12,1665431403,816088446,ir_intensity_right,170],Odom,pose,position,x,0.282152,y,0.0190803,z,0.00490623,orientation,x,0.000787936,y-0.00879343,z,0.0673205,w,0.997692,Twist,linear,x,0.181017,y,-0.0114022,z,-6.34728e-05,angular,x,0.0168944,y,0.00814803,z,-0.0460547,Hazards,[]
+
+[INFO] [1665431428.559070978] [data_collection]: Wait succeeded!
+[INFO] [1665431428.592603371] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431428.925879667] [data_collection]: Wall following succeeded!
+[INFO] [1665431428.959107517] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431428,987418648,ir_intensity_side_left,2,1665431428,987418648,ir_intensity_left,4,1665431428,987418648,ir_intensity_front_left,5,1665431428,987418648,ir_intensity_front_center_left,6,1665431428,987418648,ir_intensity_front_center_right,10,1665431428,987418648,ir_intensity_front_right,7,1665431428,987418648,ir_intensity_right,121],Odom,pose,position,x,0.374006,y,0.0292762,z,0.00649946,orientation,x,0.00105344,y-0.00906777,z,0.0455042,w,0.998922,Twist,linear,x,0.164132,y,-0.00331835,z,-8.02928e-06,angular,x,-0.0070412,y,-0.00511991,z,-0.183106,Hazards,[]
+
+[INFO] [1665431444.825718230] [data_collection]: Wait succeeded!
+[INFO] [1665431444.859235492] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431445.225908993] [data_collection]: Wall following succeeded!
+[INFO] [1665431445.259106022] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431445,273529155,ir_intensity_side_left,0,1665431445,273529155,ir_intensity_left,3,1665431445,273529155,ir_intensity_front_left,5,1665431445,273529155,ir_intensity_front_center_left,7,1665431445,273529155,ir_intensity_front_center_right,9,1665431445,273529155,ir_intensity_front_right,22,1665431445,273529155,ir_intensity_right,303],Odom,pose,position,x,0.447781,y,0.0288559,z,0.00818411,orientation,x,0.0011949,y-0.0117137,z,-0.0503458,w,0.998662,Twist,linear,x,0.169946,y,0.0030407,z,-4.62376e-05,angular,x,0.00166208,y,0.024355,z,0.0867067,Hazards,[]
+
+[INFO] [1665431463.025737392] [data_collection]: Wait succeeded!
+[INFO] [1665431463.059156863] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431463.425734232] [data_collection]: Wall following succeeded!
+[INFO] [1665431463.459013169] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431463,487948080,ir_intensity_side_left,0,1665431463,487948080,ir_intensity_left,0,1665431463,487948080,ir_intensity_front_left,2,1665431463,487948080,ir_intensity_front_center_left,5,1665431463,487948080,ir_intensity_front_center_right,19,1665431463,487948080,ir_intensity_front_right,6,1665431463,487948080,ir_intensity_right,75],Odom,pose,position,x,0.527322,y,0.0257783,z,0.00949805,orientation,x,-0.00387973,y-0.00398857,z,0.0402092,w,0.999176,Twist,linear,x,0.168716,y,-0.00651265,z,-5.70633e-05,angular,x,-0.00887614,y,0.0209128,z,-0.189507,Hazards,[]
+
+[INFO] [1665431485.592412791] [data_collection]: Wait succeeded!
+[INFO] [1665431485.625943099] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431485.959214034] [data_collection]: Wall following succeeded!
+[INFO] [1665431485.992470287] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431486,20403481,ir_intensity_side_left,0,1665431486,20403481,ir_intensity_left,0,1665431486,20403481,ir_intensity_front_left,8,1665431486,20403481,ir_intensity_front_center_left,3,1665431486,20403481,ir_intensity_front_center_right,21,1665431486,20403481,ir_intensity_front_right,12,1665431486,20403481,ir_intensity_right,113],Odom,pose,position,x,0.601561,y,0.0244444,z,0.0096584,orientation,x,-0.00316555,y0.00144826,z,-0.0658507,w,0.997823,Twist,linear,x,0.17785,y,0.00624996,z,-1.3371e-05,angular,x,-0.00629632,y,0.0142632,z,0.054743,Hazards,[]
+
+[INFO] [1665431502.958908641] [data_collection]: Wait succeeded!
+[INFO] [1665431502.992870772] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431503.325802687] [data_collection]: Wall following succeeded!
+[INFO] [1665431503.359177111] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431503,366631059,ir_intensity_side_left,0,1665431503,366631059,ir_intensity_left,4,1665431503,366631059,ir_intensity_front_left,13,1665431503,366631059,ir_intensity_front_center_left,7,1665431503,366631059,ir_intensity_front_center_right,17,1665431503,366631059,ir_intensity_front_right,44,1665431503,366631059,ir_intensity_right,124],Odom,pose,position,x,0.677477,y,0.00982548,z,0.00941459,orientation,x,-0.00440662,y0.000989811,z,-0.14799,w,0.988979,Twist,linear,x,0.164762,y,-0.00164596,z,6.22301e-05,angular,x,-0.00517731,y,-0.0168571,z,-0.16559,Hazards,[]
+
+[INFO] [1665431516.759060386] [data_collection]: Wait succeeded!
+[INFO] [1665431516.792596477] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431517.125947972] [data_collection]: Wall following succeeded!
+[INFO] [1665431517.159028921] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431517,187084732,ir_intensity_side_left,0,1665431517,187084732,ir_intensity_left,5,1665431517,187084732,ir_intensity_front_left,25,1665431517,187084732,ir_intensity_front_center_left,24,1665431517,187084732,ir_intensity_front_center_right,34,1665431517,187084732,ir_intensity_front_right,180,1665431517,187084732,ir_intensity_right,294],Odom,pose,position,x,0.751872,y,-0.0216418,z,0.00949644,orientation,x,-0.00224088,y-0.000119983,z,-0.249545,w,0.968361,Twist,linear,x,0.182211,y,0.00181443,z,6.01692e-09,angular,x,0.0184324,y,0.00903082,z,0.0166115,Hazards,[]
+
+[INFO] [1665431543.692454680] [data_collection]: Wait succeeded!
+[INFO] [1665431543.725918846] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431544.059215110] [data_collection]: Wall following succeeded!
+[INFO] [1665431544.092478084] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431544,118260888,ir_intensity_side_left,1,1665431544,118260888,ir_intensity_left,4,1665431544,118260888,ir_intensity_front_left,26,1665431544,118260888,ir_intensity_front_center_left,21,1665431544,118260888,ir_intensity_front_center_right,29,1665431544,118260888,ir_intensity_front_right,210,1665431544,118260888,ir_intensity_right,607],Odom,pose,position,x,0.809069,y,-0.0488712,z,0.00956583,orientation,x,-0.00327179,y0.000480255,z,-0.184815,w,0.982768,Twist,linear,x,0.152437,y,0.00322109,z,2.60414e-05,angular,x,-0.0103711,y,-0.00402032,z,0.206551,Hazards,[]
+
+[INFO] [1665431560.325732018] [data_collection]: Wait succeeded!
+[INFO] [1665431560.359260022] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431560.725801256] [data_collection]: Wall following succeeded!
+[INFO] [1665431560.759134151] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431560,784432603,ir_intensity_side_left,0,1665431560,784432603,ir_intensity_left,0,1665431560,784432603,ir_intensity_front_left,20,1665431560,784432603,ir_intensity_front_center_left,16,1665431560,784432603,ir_intensity_front_center_right,27,1665431560,784432603,ir_intensity_front_right,167,1665431560,784432603,ir_intensity_right,1037],Odom,pose,position,x,0.871466,y,-0.0666195,z,0.00937532,orientation,x,-0.00503915,y0.00350321,z,-0.103934,w,0.994565,Twist,linear,x,0.155226,y,0.00581282,z,-2.76343e-05,angular,x,-0.0162759,y,0.012708,z,0.247161,Hazards,[]
+
+[INFO] [1665431571.858994028] [data_collection]: Wait succeeded!
+[INFO] [1665431571.892607115] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431572.225905485] [data_collection]: Wall following succeeded!
+[INFO] [1665431572.259145715] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431572,270547433,ir_intensity_side_left,0,1665431572,270547433,ir_intensity_left,4,1665431572,270547433,ir_intensity_front_left,19,1665431572,270547433,ir_intensity_front_center_left,19,1665431572,270547433,ir_intensity_front_center_right,24,1665431572,270547433,ir_intensity_front_right,96,1665431572,270547433,ir_intensity_right,941],Odom,pose,position,x,0.934123,y,-0.0753447,z,0.0090498,orientation,x,-0.00613712,y0.00187434,z,-0.0234034,w,0.999705,Twist,linear,x,0.164329,y,0.00480405,z,5.69692e-05,angular,x,0.00256622,y,-0.0323714,z,0.199724,Hazards,[]
+
+[INFO] [1665431583.325673542] [data_collection]: Wait succeeded!
+[INFO] [1665431583.359251889] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431583.725868075] [data_collection]: Wall following succeeded!
+[INFO] [1665431583.759131239] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431583,779864876,ir_intensity_side_left,2,1665431583,779864876,ir_intensity_left,0,1665431583,779864876,ir_intensity_front_left,22,1665431583,779864876,ir_intensity_front_center_left,18,1665431583,779864876,ir_intensity_front_center_right,24,1665431583,779864876,ir_intensity_front_right,28,1665431583,779864876,ir_intensity_right,318],Odom,pose,position,x,1.00804,y,-0.0740713,z,0.00891554,orientation,x,-0.00528236,y-0.000121682,z,0.0706838,w,0.997485,Twist,linear,x,0.157004,y,-0.000721741,z,2.91143e-05,angular,x,0.000972927,y,-0.0138506,z,0.142254,Hazards,[]
+
+[INFO] [1665431595.725719644] [data_collection]: Wait succeeded!
+[INFO] [1665431595.759809057] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431596.125839248] [data_collection]: Wall following succeeded!
+[INFO] [1665431596.159117211] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431596,186323139,ir_intensity_side_left,1,1665431596,186323139,ir_intensity_left,2,1665431596,186323139,ir_intensity_front_left,39,1665431596,186323139,ir_intensity_front_center_left,25,1665431596,186323139,ir_intensity_front_center_right,36,1665431596,186323139,ir_intensity_front_right,55,1665431596,186323139,ir_intensity_right,152],Odom,pose,position,x,1.09328,y,-0.0608361,z,0.00851842,orientation,x,-0.00437786,y0.00380533,z,0.0981691,w,0.995153,Twist,linear,x,0.174409,y,-0.0123777,z,1.02661e-08,angular,x,3.45199e-09,y,2.41639e-08,z,-2.9457e-07,Hazards,[]
+
+[INFO] [1665431609.925722927] [data_collection]: Wait succeeded!
+[INFO] [1665431609.959225182] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431610.325874483] [data_collection]: Wall following succeeded!
+[INFO] [1665431610.359080114] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431610,387592190,ir_intensity_side_left,1,1665431610,387592190,ir_intensity_left,14,1665431610,387592190,ir_intensity_front_left,82,1665431610,387592190,ir_intensity_front_center_left,69,1665431610,387592190,ir_intensity_front_center_right,61,1665431610,387592190,ir_intensity_front_right,128,1665431610,387592190,ir_intensity_right,246],Odom,pose,position,x,1.17944,y,-0.0496282,z,0.00733485,orientation,x,-0.00257713,y0.00967944,z,0.027373,w,0.999575,Twist,linear,x,0.167743,y,0.002748,z,-2.97068e-05,angular,x,0.00402959,y,0.0138189,z,0.181414,Hazards,[]
+
+[INFO] [1665431622.492314327] [data_collection]: Wait succeeded!
+[INFO] [1665431622.525958576] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431622.859199085] [data_collection]: Wall following succeeded!
+[INFO] [1665431622.892478102] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431622,912481575,ir_intensity_side_left,3,1665431622,912481575,ir_intensity_left,24,1665431622,912481575,ir_intensity_front_left,138,1665431622,912481575,ir_intensity_front_center_left,128,1665431622,912481575,ir_intensity_front_center_right,126,1665431622,912481575,ir_intensity_front_right,325,1665431622,912481575,ir_intensity_right,170],Odom,pose,position,x,1.2512,y,-0.0430722,z,0.00569684,orientation,x,-0.0022352,y0.012815,z,0.0704018,w,0.997434,Twist,linear,x,0.154391,y,-0.00513193,z,-2.37924e-05,angular,x,-0.00204748,y,0.0180169,z,-0.193996,Hazards,[]
+
+[INFO] [1665431645.992426190] [data_collection]: Wait succeeded!
+[INFO] [1665431646.026302898] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431646.359250987] [data_collection]: Wall following succeeded!
+[INFO] [1665431646.392490758] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431646,429434323,ir_intensity_side_left,6,1665431646,429434323,ir_intensity_left,82,1665431646,429434323,ir_intensity_front_left,201,1665431646,429434323,ir_intensity_front_center_left,367,1665431646,429434323,ir_intensity_front_center_right,416,1665431646,429434323,ir_intensity_front_right,345,1665431646,429434323,ir_intensity_right,496],Odom,pose,position,x,1.32272,y,-0.0396201,z,0.00409785,orientation,x,-0.00266741,y0.00926344,z,0.0546503,w,0.998459,Twist,linear,x,0.160681,y,0.00102382,z,8.91516e-05,angular,x,-0.00432862,y,-0.0102824,z,0.115668,Hazards,[]
+
+[INFO] [1665431659.692455964] [data_collection]: Wait succeeded!
+[INFO] [1665431659.725929908] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431660.059272547] [data_collection]: Wall following succeeded!
+[INFO] [1665431660.092485375] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431660,114488114,ir_intensity_side_left,12,1665431660,114488114,ir_intensity_left,119,1665431660,114488114,ir_intensity_front_left,320,1665431660,114488114,ir_intensity_front_center_left,1261,1665431660,114488114,ir_intensity_front_center_right,1952,1665431660,114488114,ir_intensity_front_right,808,1665431660,114488114,ir_intensity_right,3762],Odom,pose,position,x,1.38263,y,-0.0288352,z,0.00301383,orientation,x,-0.00258459,y0.00795204,z,0.134528,w,0.990875,Twist,linear,x,0.155502,y,-0.00567422,z,2.56956e-05,angular,x,-0.00543201,y,-0.0047347,z,0.199421,Hazards,[]
+
+[INFO] [1665431672.492284379] [data_collection]: Wait succeeded!
+[INFO] [1665431672.526310276] [data_collection]: Sending wall following goal with args: sec 0, nanosec 250000000
+[INFO] [1665431672.859217970] [data_collection]: Wall following succeeded!
+[INFO] [1665431672.892507548] [data_collection]: Irintensityvector,header {sec, nanosec, frame_id},value,[1665431672,920292262,ir_intensity_side_left,10,1665431672,920292262,ir_intensity_left,104,1665431672,920292262,ir_intensity_front_left,401,1665431672,920292262,ir_intensity_front_center_left,1968,1665431672,920292262,ir_intensity_front_center_right,3768,1665431672,920292262,ir_intensity_front_right,3771,1665431672,920292262,ir_intensity_right,939],Odom,pose,position,x,1.41717,y,-0.0181109,z,0.00244906,orientation,x,-0.00206922,y0.00542454,z,0.201919,w,0.979385,Twist,linear,x,-0.0857269,y,0.00629882,z,-5.2535e-11,angular,x,0,y,-2.68979e-09,z,0,Hazards,[]
+
+[INFO] [1665431688.688971262] [data_collection]: Received request to cancel goal
+[INFO] [1665431688.692664921] [data_collection]: Goal canceled!
+[INFO] [1665431690.929530572] [rclcpp]: signal_handler(signum=2)
