@@ -1,0 +1,66 @@
+---
+repositories:
+  gz-cmake:
+    type: git
+    url: https://github.com/gazebosim/gz-cmake
+    version: ign-cmake2
+  gz-common:
+    type: git
+    url: https://github.com/gazebosim/gz-common
+    version: ign-common4
+  gz-fuel-tools:
+    type: git
+    url: https://github.com/gazebosim/gz-fuel-tools
+    version: ign-fuel-tools6
+  gz-sim:
+    type: git
+    url: https://github.com/gazebosim/gz-sim
+    version: ign-gazebo5
+  gz-gui:
+    type: git
+    url: https://github.com/gazebosim/gz-gui
+    version: ign-gui5
+  gz-launch:
+    type: git
+    url: https://github.com/gazebosim/gz-launch
+    version: ign-launch4
+  gz-math:
+    type: git
+    url: https://github.com/gazebosim/gz-math
+    version: ign-math6
+  gz-msgs:
+    type: git
+    url: https://github.com/gazebosim/gz-msgs
+    version: ign-msgs7
+  gz-physics:
+    type: git
+    url: https://github.com/gazebosim/gz-physics
+    version: ign-physics4
+  gz-plugin:
+    type: git
+    url: https://github.com/gazebosim/gz-plugin
+    version: ign-plugin1
+  gz-rendering:
+    type: git
+    url: https://github.com/gazebosim/gz-rendering
+    version: ign-rendering5
+  gz-sensors:
+    type: git
+    url: https://github.com/gazebosim/gz-sensors
+    version: ign-sensors5
+  gz-tools:
+    type: git
+    url: https://github.com/gazebosim/gz-tools
+    version: ign-tools1
+  gz-transport:
+    type: git
+    url: https://github.com/gazebosim/gz-transport
+    version: ign-transport10
+  gz-utils:
+    type: git
+    url: https://github.com/gazebosim/gz-utils
+    version: ign-utils1
+  sdformat:
+    type: git
+    url: https://github.com/gazebosim/sdformat
+    version: sdf11
