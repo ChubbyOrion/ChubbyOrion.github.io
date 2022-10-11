@@ -3,26 +3,14 @@ h1 {
   block-size: fit-content;
   background-image: linear-gradient(to right, #29a19c, #a3f7bf);  
 }
+
 main {
-    justify-content: left;
-    list-style: none;
-    width: 100%;
-}
-main li {
-    display: inline;
-    list-style-type: none;
+    background-color: #a3f7bf;
+    grid-area: main;
+    padding: 2em;
+    margin-bottom: 2em;
 }
 
-main .active {
-    border-color: #a3f7bf;
-}
-
-main a {
-    list-style-type: none;
-    color: black;
-    border: 2px solid #4b6289;
-}
-
-main a:hover {
-    border-color: aqua;
+main a{
+    color: #4b6289;
 }
