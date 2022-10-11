@@ -3,26 +3,26 @@ h1 {
   block-size: fit-content;
   background-image: linear-gradient(to right, #29a19c, #a3f7bf);  
 }
-.main {
+main {
     justify-content: left;
     list-style: none;
     width: 100%;
 }
-.main li {
+main li {
     display: inline;
     list-style-type: none;
 }
 
-.main .active {
+main .active {
     border-color: #a3f7bf;
 }
 
-.main a {
+main a {
     list-style-type: none;
-    color: white;
+    color: black;
     border: 2px solid #4b6289;
 }
 
-.main a:hover {
+main a:hover {
     border-color: aqua;
 }
