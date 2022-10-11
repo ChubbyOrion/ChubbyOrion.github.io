@@ -33,6 +33,8 @@ CoverageStateMachine::CoverageStateMachine(
 
 //    m_undocking = false;
     m_preparing_spiral = false;
+
+	m_last_time_printed = m_clock->now();
 }
 
 CoverageStateMachine::~CoverageStateMachine()
@@ -74,11 +76,19 @@ void CoverageStateMachine::select_start_behavior(const Behavior::Data& data)
 //    } else {
 
 //        this->goto_spiral(SpiralBehavior::Config());
-    auto wall_follow_config = WallFollowBehavior::Config();
-	wall_follow_config.follow_side = m_goal.wall_follow_side;
-	wall_follow_config.sec = m_goal.max_wall_follow_runtime.sec;
-    wall_follow_config.nanosec = m_goal.max_wall_follow_runtime.nanosec;
-    this->goto_wall_follow(wall_follow_config);
+
+	if (m_goal.wall_follow_side == 1 || m_goal.wall_follow_side == -1) {
+		auto wall_follow_config = WallFollowBehavior::Config();
+		wall_follow_config.follow_side = m_goal.wall_follow_side;
+		wall_follow_config.sec = m_goal.max_wall_follow_runtime.sec;
+		wall_follow_config.nanosec = m_goal.max_wall_follow_runtime.nanosec;
+		this->goto_wall_follow(wall_follow_config);
+	} else {
+		auto drive_config = DriveStraightBehavior::Config();
+		drive_config.max_distance = 0.5;
+		drive_config.min_distance = 0.5;
+		this->goto_drive_straight(drive_config);
+	}
 	
 //    }
 }
@@ -86,6 +96,7 @@ void CoverageStateMachine::select_start_behavior(const Behavior::Data& data)
 void CoverageStateMachine::print_state(const Behavior::Data& data) {
 	auto readings = data.irIntensityVector.readings;
 	std::stringstream ss;
+
 	ss << "Irintensityvector,";
 	ss << "header {sec, nanosec, frame_id},value,[";
 	bool first = true;
@@ -128,9 +139,12 @@ void CoverageStateMachine::print_state(const Behavior::Data& data) {
 
 void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
 {
-	bool print_duration_elapsed = m_clock->now() - m_start_time >= m_goal.print_duration;
+	auto now = m_clock->now();
+	auto duration = now - m_last_time_printed;
+	bool print_duration_elapsed = duration >= m_goal.print_duration;
 	if (print_duration_elapsed) {
 		this->print_state(data);
+		m_last_time_printed = now;
 	}
 	
     // Keep going with the current behavior if it's still running
@@ -176,28 +190,28 @@ void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
 //            }
 
             // If we were trying to get to spiral motion, do it only if drive straight succeeded (i.e. we moved enough from obstacle)
-            if (m_preparing_spiral && m_behavior_state == State::SUCCESS) {
-                m_preparing_spiral = false;
-                this->goto_spiral(SpiralBehavior::Config());
-                break;  
-            }
+			//            if (m_preparing_spiral && m_behavior_state == State::SUCCESS) {
+            //    m_preparing_spiral = false;
+            //    this->goto_spiral(SpiralBehavior::Config());
+            //    break;  
+            //}
 
             // Usually after a DRIVE_STRAIGHT go to ROTATE
             // If we failed previous drive straight, let's use a random angle 
             auto rotate_config = RotateBehavior::Config();
-            if (m_behavior_state == State::FAILURE) {
+            //if (m_behavior_state == State::FAILURE) {
                 
                 // Check if we failed too many times consecutively
-                if (m_evade_attempts.size() > 20) {
-                    m_coverage_output.state = State::FAILURE;
-                    break;
-                } 
+            //    if (m_evade_attempts.size() > 20) {
+			//       m_coverage_output.state = State::FAILURE;
+            //        break;
+            //    } 
 
-                constexpr double evade_resolution = 0.175433; // 10 degrees
-                rotate_config.target_rotation = compute_evade_rotation(data.pose, evade_resolution);
-            } else {
-                m_evade_attempts.clear();
-            }
+            //    constexpr double evade_resolution = 0.175433; // 10 degrees
+			rotate_config.target_rotation = compute_rotation(data.pose, 90);//compute_evade_rotation(data.pose, evade_resolution);
+			//            } else {
+            //    m_evade_attempts.clear();
+            //}
             rotate_config.robot_has_reflexes = m_has_reflexes;
             this->goto_rotate(rotate_config);
             break;
@@ -205,20 +219,21 @@ void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
         case FeedbackMsg::ROTATE:
         {
             // A rotate failure indicates that we haven't been able to clear hazards
-            if (m_behavior_state == State::FAILURE) {
-                m_coverage_output.state = State::FAILURE;
-                break;
-            }            
-
-            auto drive_config = DriveStraightBehavior::Config();
+			//            if (m_behavior_state == State::FAILURE) {
+			//                m_coverage_output.state = State::FAILURE;
+			//                break;
+			//            }            
             // Check if it's time to go back spiraling, if it's the case we will do only a short DRIVE_STRAIGHT to
             // move away from current obstacle (rather than driving forever until a new obstacle is hit).
             // Alternatively we will go into DRIVE_STRAIGHT forever.
-            if (m_clock->now() - m_last_spiral_time >= rclcpp::Duration(std::chrono::seconds(60))) {
-                drive_config.max_distance = 0.25;
-                drive_config.min_distance = 0.25;
-                m_preparing_spiral = true;
-            }
+			//            if (m_clock->now() - m_last_spiral_time >= rclcpp::Duration(std::chrono::seconds(60))) {
+			//                drive_config.max_distance = 0.25;
+			//                drive_config.min_distance = 0.25;
+			//                m_preparing_spiral = true;
+			//            }
+			auto drive_config = DriveStraightBehavior::Config();
+			drive_config.max_distance = 0.5;
+			drive_config.min_distance = 0.5;
 
             this->goto_drive_straight(drive_config);
             break;
@@ -241,11 +256,15 @@ void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
 		}
     case FeedbackMsg::WAIT:
 		{
-			auto wall_follow_config = WallFollowBehavior::Config();
-			wall_follow_config.follow_side = m_goal.wall_follow_side;
-			wall_follow_config.sec = m_goal.max_wall_follow_runtime.sec;
-			wall_follow_config.nanosec = m_goal.max_wall_follow_runtime.nanosec;
-			this->goto_wall_follow(wall_follow_config);
+			if (m_goal.wall_follow_side == 1 || m_goal.wall_follow_side == -1) {
+			    auto wall_follow_config = WallFollowBehavior::Config();
+			    wall_follow_config.follow_side = m_goal.wall_follow_side;
+			    wall_follow_config.sec = m_goal.max_wall_follow_runtime.sec;
+			    wall_follow_config.nanosec = m_goal.max_wall_follow_runtime.nanosec;
+				this->goto_wall_follow(wall_follow_config);
+			} else {
+				this->goto_wait();
+			}
 			break;
 		}
 //        case FeedbackMsg::UNDOCK:
@@ -263,6 +282,20 @@ void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
 //            break;
 //        }
     }
+}
+
+double CoverageStateMachine::compute_rotation(const geometry_msgs::msg::Pose& pose, double angleDegrees)
+{
+    tf2::Quaternion current_orientation;
+    tf2::convert(pose.orientation, current_orientation);
+    
+    tf2::Quaternion target_orientation;
+	double angleRadians = angleDegrees * M_PI/180;
+    target_orientation.setRPY(0.0, 0.0, angleRadians);
+
+    tf2::Quaternion relative_orientation = target_orientation;// * current_orientation.inverse();
+    double relative_yaw_rotation = tf2::getYaw(relative_orientation);
+    return relative_yaw_rotation;
 }
 
 double CoverageStateMachine::compute_evade_rotation(const geometry_msgs::msg::Pose& pose, double resolution)

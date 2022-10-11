@@ -74,6 +74,8 @@ private:
 
 //    void goto_undock();
 
+	double compute_rotation(const geometry_msgs::msg::Pose& pose, double angleDegrees);
+	
     double compute_evade_rotation(const geometry_msgs::msg::Pose& pose, double resolution);
 
     std::shared_ptr<Behavior> m_current_behavior;
@@ -95,6 +97,8 @@ private:
     rclcpp::Publisher<TwistMsg>::SharedPtr m_cmd_vel_publisher;
     rclcpp::Logger m_logger;
     rclcpp::Clock::SharedPtr m_clock;
+
+	rclcpp::Time m_last_time_printed;
 };
 
 } // namespace create3_coverage
