@@ -11,6 +11,11 @@ main {
     margin-bottom: 2em;
 }
 
-main a{
+main a {
     color: #4b6289;
+}
+
+main li {
+    display: inline;
+    list-style-type: none;
 }
