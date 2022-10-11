@@ -119,13 +119,17 @@ void CoverageStateMachine::print_state(const Behavior::Data& data) {
 			} else {
 				ss << ",";
 			}
-			ss << detection.type;
+			ss << detection.header.frame_id;
 		}
 		ss << "]";
 	} else {
 		ss << "\n";
 		for (auto& reading : readings) {
 			ss << reading.header.frame_id << "," << reading.value << "\n";
+		}
+		ss << "\n";
+		for (auto& detection : data.hazards.detections) {
+			ss << detection.header.frame_id << "," << detection.type << "\n";
 		}
 	}
 	RCLCPP_INFO(m_logger, "%s\n", ss.str().c_str());
