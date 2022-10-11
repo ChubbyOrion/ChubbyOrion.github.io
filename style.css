@@ -1,21 +1,25 @@
+.site {
+  min-height: 100%;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+}
+
 h1 {
   text-align: center;
   block-size: fit-content;
   background-image: linear-gradient(to right, #29a19c, #a3f7bf);  
 }
-
 main {
-    background-color: #a3f7bf;
     grid-area: main;
     padding: 2em;
     margin-bottom: 2em;
 }
 
 main a {
-    color: #4b6289;
+    color: black;
 }
 
-main li {
-    display: inline;
-    list-style-type: none;
+main a:hover {
+    color: white;
 }
