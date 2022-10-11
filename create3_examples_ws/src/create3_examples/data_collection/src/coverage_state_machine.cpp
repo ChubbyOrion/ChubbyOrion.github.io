@@ -13,8 +13,6 @@ CoverageStateMachine::CoverageStateMachine(
     create3_examples_msgs::action::Coverage::Goal goal,
     rclcpp::Clock::SharedPtr clock,
     rclcpp::Logger logger,
-//    rclcpp_action::Client<DockAction>::SharedPtr dock_action_client,
-//    rclcpp_action::Client<UndockAction>::SharedPtr undock_action_client,
     rclcpp_action::Client<WallFollowAction>::SharedPtr wall_follow_action_client,
     rclcpp::Publisher<TwistMsg>::SharedPtr cmd_vel_publisher,
     bool has_reflexes)
@@ -26,12 +24,9 @@ CoverageStateMachine::CoverageStateMachine(
     m_start_time = m_clock->now();
     m_has_reflexes = has_reflexes;
 
-//    m_dock_action_client = dock_action_client;
-//    m_undock_action_client = undock_action_client;
     m_wall_follow_action_client = wall_follow_action_client;
     m_cmd_vel_publisher = cmd_vel_publisher;
-
-//    m_undocking = false;
+	
     m_preparing_spiral = false;
 
 	m_last_time_printed = m_clock->now();
@@ -71,12 +66,6 @@ void CoverageStateMachine::cancel()
 
 void CoverageStateMachine::select_start_behavior(const Behavior::Data& data)
 {
-//    if (data.dock.is_docked) {
-//        this->goto_undock();
-//    } else {
-
-//        this->goto_spiral(SpiralBehavior::Config());
-
 	if (m_goal.wall_follow_side == 1 || m_goal.wall_follow_side == -1) {
 		auto wall_follow_config = WallFollowBehavior::Config();
 		wall_follow_config.follow_side = m_goal.wall_follow_side;
@@ -84,55 +73,61 @@ void CoverageStateMachine::select_start_behavior(const Behavior::Data& data)
 		wall_follow_config.nanosec = m_goal.max_wall_follow_runtime.nanosec;
 		this->goto_wall_follow(wall_follow_config);
 	} else {
-		auto drive_config = DriveStraightBehavior::Config();
-		drive_config.max_distance = 0.5;
-		drive_config.min_distance = 0.5;
-		this->goto_drive_straight(drive_config);
+		//		auto drive_config = DriveStraightBehavior::Config();
+		//drive_config.max_distance = 0.5;
+		//drive_config.min_distance = 0.5;
+		//this->goto_drive_straight(drive_config);
+		this->goto_wait();
 	}
-	
-//    }
 }
 
 void CoverageStateMachine::print_state(const Behavior::Data& data) {
 	auto readings = data.irIntensityVector.readings;
 	std::stringstream ss;
 
-	ss << "Irintensityvector,";
-	ss << "header {sec, nanosec, frame_id},value,[";
-	bool first = true;
-	for (auto& reading : readings) {
-		if (first) {
-			first = false;
-		} else {
-			ss << ",";
+	if (m_goal.wall_follow_side == 1 || m_goal.wall_follow_side == -1) {
+		ss << "Irintensityvector,";
+		ss << "header {sec, nanosec, frame_id},value,[";
+		bool first = true;
+		for (auto& reading : readings) {
+			if (first) {
+				first = false;
+			} else {
+				ss << ",";
+			}
+			ss << reading.header.stamp.sec;
+			ss << "," << reading.header.stamp.nanosec;
+			ss << "," << reading.header.frame_id;
+			ss << "," << reading.value;
 		}
-		ss << reading.header.stamp.sec;
-		ss << "," << reading.header.stamp.nanosec;
-		ss << "," << reading.header.frame_id;
-		ss << "," << reading.value;
-	}
-	ss << "]";
-	ss << ",Odom" << ",pose,position";
-	ss << ",x," << data.pose.position.x << ",y," << data.pose.position.y << ",z," << data.pose.position.z;
-	ss << ",orientation";
-	ss << ",x," << data.pose.orientation.x << ",y" << data.pose.orientation.y << ",z," << data.pose.orientation.z << ",w," << data.pose.orientation.w;
-	ss << ",Twist";
-	ss << ",linear";
-	ss << ",x," << data.twist.linear.x << ",y," << data.twist.linear.y << ",z," << data.twist.linear.z;
-	ss << ",angular";
-	ss << ",x," << data.twist.angular.x << ",y," << data.twist.angular.y << ",z," << data.twist.angular.z;
-	ss << ",Hazards";
-	bool firstHazard = true;
-	ss << ",[";
-	for (auto& detection : data.hazards.detections) {
-		if (firstHazard) {
-			firstHazard = false;
-		} else {
-			ss << ",";
+		ss << "]";
+		ss << ",Odom" << ",pose,position";
+		ss << ",x," << data.pose.position.x << ",y," << data.pose.position.y << ",z," << data.pose.position.z;
+		ss << ",orientation";
+		ss << ",x," << data.pose.orientation.x << ",y" << data.pose.orientation.y << ",z," << data.pose.orientation.z << ",w," << data.pose.orientation.w;
+		ss << ",Twist";
+		ss << ",linear";
+		ss << ",x," << data.twist.linear.x << ",y," << data.twist.linear.y << ",z," << data.twist.linear.z;
+		ss << ",angular";
+		ss << ",x," << data.twist.angular.x << ",y," << data.twist.angular.y << ",z," << data.twist.angular.z;
+		ss << ",Hazards";
+		bool firstHazard = true;
+		ss << ",[";
+		for (auto& detection : data.hazards.detections) {
+			if (firstHazard) {
+				firstHazard = false;
+			} else {
+				ss << ",";
+			}
+			ss << detection.type;
 		}
-		ss << detection.type;
+		ss << "]";
+	} else {
+		ss << "\n";
+		for (auto& reading : readings) {
+			ss << reading.header.frame_id << "," << reading.value << "\n";
+		}
 	}
-	ss << "]";
 	RCLCPP_INFO(m_logger, "%s\n", ss.str().c_str());
 	return;
 }
@@ -154,32 +149,14 @@ void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
     }
 
     // Check if it's time to wrap up the behavior
-    bool explore_duration_elapsed = m_clock->now() - m_start_time >= m_goal.explore_duration;
     bool max_runtime_elapsed = m_clock->now() - m_start_time >= m_goal.max_runtime;
     if (max_runtime_elapsed) {
         m_coverage_output.state = State::SUCCESS;
         return;
     }
-//   if (m_current_behavior->get_id() != FeedbackMsg::DOCK && 
-//      explore_duration_elapsed && data.dock.dock_visible)
-// {
-//        this->goto_dock();
-//        return;
-//    }
 
     switch (m_current_behavior->get_id())
     {
-//        case FeedbackMsg::DOCK:
-//        {
-//            // A dock action should indicate the termination of the behavior.
-//            // Do not set a new behavior, either return SUCCESS or FAILURE.
-//            if (m_behavior_state == State::FAILURE || !data.dock.is_docked) {
-//                m_coverage_output.state = State::FAILURE;
-//                break;
-//            }
-//            m_coverage_output.state = State::SUCCESS;
-//            break;
-//        }
         case FeedbackMsg::DRIVE_STRAIGHT:
         {
             // If we just undocked, then we want to start with a spiral motion
@@ -267,20 +244,6 @@ void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
 			}
 			break;
 		}
-//        case FeedbackMsg::UNDOCK:
-//        {
-//            if (m_behavior_state == State::FAILURE || data.dock.is_docked) {
-//                m_coverage_output.state = State::FAILURE;
-//                break;
-//            }
-
-//            // After undocking, try to move away from the dock a little bit
-//            auto drive_config = DriveStraightBehavior::Config();
-//            drive_config.max_distance = 0.25;
-//            drive_config.min_distance = 0.25;
-//            this->goto_drive_straight(drive_config);
-//            break;
-//        }
     }
 }
 
@@ -344,12 +307,6 @@ double CoverageStateMachine::compute_evade_rotation(const geometry_msgs::msg::Po
     return relative_yaw_rotation;
 }
 
-//void CoverageStateMachine::goto_dock()
-//{
-//    m_current_behavior = std::make_unique<DockBehavior>(m_dock_action_client, m_logger);
-//    m_coverage_output.state = State::RUNNING;
-//}
-
 void CoverageStateMachine::goto_wall_follow(const WallFollowBehavior::Config& config)
 {
     m_current_behavior = std::make_unique<WallFollowBehavior>(config, m_wall_follow_action_client, m_logger); 
@@ -380,12 +337,5 @@ void CoverageStateMachine::goto_spiral(const SpiralBehavior::Config& config)
     m_current_behavior = std::make_shared<SpiralBehavior>(config, m_cmd_vel_publisher, m_logger, m_clock);
     m_coverage_output.state = State::RUNNING;
 }
-
-//void CoverageStateMachine::goto_undock()
-//{
-//    m_undocking = true;
-//    m_current_behavior = std::make_unique<UndockBehavior>(m_undock_action_client, m_logger);
-//    m_coverage_output.state = State::RUNNING;
-//}
 
 } // namespace create3_coverage

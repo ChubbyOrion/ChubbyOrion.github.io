@@ -35,9 +35,6 @@ private:
     using CoverageAction = create3_examples_msgs::action::Coverage;
     using GoalHandleCoverage = rclcpp_action::ServerGoalHandle<CoverageAction>;
 
-//    using DockAction = irobot_create_msgs::action::Dock;
-//    using UndockAction = irobot_create_msgs::action::Undock;
-//    using DockMsg = irobot_create_msgs::msg::DockStatus;
     using WallFollowAction = irobot_create_msgs::action::WallFollow;
     using HazardMsg = irobot_create_msgs::msg::HazardDetectionVector;
     using KidnapMsg = irobot_create_msgs::msg::KidnapStatus;
@@ -66,8 +63,6 @@ private:
 
     void execute(const std::shared_ptr<GoalHandleCoverage> goal_handle);
 
-//    void dock_callback(DockMsg::ConstSharedPtr msg);
-
     void hazards_callback(HazardMsg::ConstSharedPtr msg);
 
     void ir_opcode_callback(OpCodeMsg::ConstSharedPtr msg);
@@ -89,8 +84,6 @@ private:
     std::atomic<bool> m_is_running;
     std::mutex m_mutex;
 
- //   std::atomic<bool> m_dock_msgs_received;
- //   DockMsg m_last_dock;
     HazardMsg m_last_hazards;
     KidnapMsg m_last_kidnap;
     OdometryMsg m_last_odom;
@@ -101,8 +94,6 @@ private:
 
     rclcpp_action::Server<CoverageAction>::SharedPtr m_coverage_action_server;
 
- //   rclcpp_action::Client<DockAction>::SharedPtr m_dock_action_client;
- //   rclcpp_action::Client<UndockAction>::SharedPtr m_undock_action_client;
     rclcpp_action::Client<WallFollowAction>::SharedPtr m_wall_follow_action_client;
 
 	rclcpp::Client<ResetPosSrv>::SharedPtr m_reset_pos_client;
@@ -111,7 +102,6 @@ private:
 
     rclcpp::AsyncParametersClient::SharedPtr m_reflexes_param_client;
 
- //   rclcpp::Subscription<DockMsg>::SharedPtr m_dock_subscription;
     rclcpp::Subscription<HazardMsg>::SharedPtr m_hazards_subscription;
     rclcpp::Subscription<KidnapMsg>::SharedPtr m_kidnap_subscription;
     rclcpp::Subscription<OdometryMsg>::SharedPtr m_odom_subscription;

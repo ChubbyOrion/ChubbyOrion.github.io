@@ -23,20 +23,6 @@ Create3CoverageNode::Create3CoverageNode()
         std::bind(&Create3CoverageNode::handle_cancel, this, _1),
         std::bind(&Create3CoverageNode::handle_accepted, this, _1));
 
-//    m_dock_action_client = rclcpp_action::create_client<DockAction>(
-//        this->get_node_base_interface(),
-//        this->get_node_graph_interface(),
-//        this->get_node_logging_interface(),
-//        this->get_node_waitables_interface(),
-//        "dock");
-
-//    m_undock_action_client = rclcpp_action::create_client<UndockAction>(
-//        this->get_node_base_interface(),
-//        this->get_node_graph_interface(),
-//        this->get_node_logging_interface(),
-//        this->get_node_waitables_interface(),
-//        "undock");
-
     m_wall_follow_action_client = rclcpp_action::create_client<WallFollowAction>(
         this->get_node_base_interface(),
         this->get_node_graph_interface(),
@@ -57,11 +43,6 @@ Create3CoverageNode::Create3CoverageNode()
         this->get_node_services_interface(),
         "motion_control",
         rmw_qos_profile_parameters);
-
-//    m_dock_subscription = this->create_subscription<DockMsg>(
-//        "dock",
-//        rclcpp::SensorDataQoS(),
-//        std::bind(&Create3CoverageNode::dock_callback, this, _1));
 
     m_hazards_subscription = this->create_subscription<HazardMsg>(
         "hazard_detection",
@@ -96,7 +77,6 @@ Create3CoverageNode::Create3CoverageNode()
     m_rate_hz = this->declare_parameter<double>("rate_hz", 30);
     m_opcodes_buffer_ms = this->declare_parameter<int>("opcodes_buffer_ms", 200);
 
-//    m_dock_msgs_received = false;
     m_is_running = false;
     m_last_behavior = -1;
     m_last_opcodes_cleared_time = this->now();
@@ -167,15 +147,12 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleCoverage> goal
         *goal,
         this->get_clock(),
         this->get_logger(),
- //       m_dock_action_client,
-//        m_undock_action_client,
         m_wall_follow_action_client,
         m_cmd_vel_publisher,
         robot_has_reflexes);
 
     CoverageStateMachine::CoverageOutput output;
     output.state = State::RUNNING;
-//    bool is_docked = false;
     bool is_kidnapped = false;
     do {
 
@@ -186,7 +163,6 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleCoverage> goal
 
 			cont = m_pose_reset;
             data.hazards = m_last_hazards;
-//            data.dock = m_last_dock;
             data.pose = m_last_odom.pose.pose;
 			data.twist = m_last_odom.twist.twist;
             data.opcodes = m_last_opcodes;
@@ -197,7 +173,6 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleCoverage> goal
             }
 
             is_kidnapped = m_last_kidnap.is_kidnapped;
-//            is_docked = m_last_dock.is_docked;
             data.irIntensityVector = m_last_intensity_vector;
 
 			data.interfaceButtons = m_last_interface_buttons;
@@ -209,7 +184,6 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleCoverage> goal
             state_machine->cancel();
             auto result = std::make_shared<CoverageAction::Result>();
             result->success = false;
-//            result->is_docked = is_docked;
             result->duration = this->now() - start_time;
             goal_handle->canceled(result);
             RCLCPP_INFO(this->get_logger(), "Goal canceled!");
@@ -222,7 +196,6 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleCoverage> goal
             state_machine->cancel();
             auto result = std::make_shared<CoverageAction::Result>();
             result->success = false;
-//            result->is_docked = is_docked;
             result->duration = this->now() - start_time;
             goal_handle->abort(result);
             RCLCPP_ERROR(this->get_logger(), "Aborting goal! Robot has been kidnapped!");
@@ -249,7 +222,6 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleCoverage> goal
         m_is_running = false;
         auto result = std::make_shared<CoverageAction::Result>();
         result->success = (output.state == State::SUCCESS);
- //       result->is_docked = is_docked;
         result->duration = this->now() - start_time;
         if (result->success) {
             goal_handle->succeed(result);
@@ -312,8 +284,7 @@ bool Create3CoverageNode::reflexes_setup()
 bool Create3CoverageNode::ready_to_start()
 {
 
-    if (//m_dock_subscription->get_publisher_count() == 0 ||
-        m_hazards_subscription->get_publisher_count() == 0 ||
+    if (m_hazards_subscription->get_publisher_count() == 0 ||
         m_ir_opcode_subscription->get_publisher_count() == 0 ||
         m_odom_subscription->get_publisher_count() == 0 ||
         m_kidnap_subscription->get_publisher_count() == 0 ||
@@ -334,22 +305,10 @@ bool Create3CoverageNode::ready_to_start()
         return false;
     }
 
-//    if (!m_dock_action_client->action_server_is_ready() ||
-//        !m_undock_action_client->action_server_is_ready())
-//    {
-//        RCLCPP_WARN(this->get_logger(), "Some actions servers are not ready yet");
-//        return false;
-//    }
     if (!m_wall_follow_action_client->action_server_is_ready()) {
         RCLCPP_WARN(this->get_logger(), "Some actions servers are not ready yet");
         return false;
     }
-
-    // We must know if the robot is docked or not before starting the behavior
-//    if (!m_dock_msgs_received) {
-//        RCLCPP_WARN(this->get_logger(), "Didn't receive a dock message yet");
-//        return false;
-//    }
 
 	if (!m_reset_pos_client->wait_for_service(std::chrono::duration< int64_t,  std::milli >(1000)))
 		{
@@ -365,13 +324,6 @@ bool Create3CoverageNode::ready_to_start()
 	RCLCPP_INFO(this->get_logger(), "Sent request to reset pose!");
     return true;
 }
-
-//void Create3CoverageNode::dock_callback(DockMsg::ConstSharedPtr msg)
-//{
-//    std::lock_guard<std::mutex> guard(m_mutex);
-//    m_dock_msgs_received = true;
-//    m_last_dock = *msg;
-//}
 
 void Create3CoverageNode::hazards_callback(HazardMsg::ConstSharedPtr msg)
 {

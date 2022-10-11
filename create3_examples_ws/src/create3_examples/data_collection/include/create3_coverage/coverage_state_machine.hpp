@@ -24,8 +24,6 @@ namespace create3_coverage {
 class CoverageStateMachine
 {
 public:
-//    using DockAction = irobot_create_msgs::action::Dock;
-//    using UndockAction = irobot_create_msgs::action::Undock;
     using WallFollowAction = irobot_create_msgs::action::WallFollow;
     using TwistMsg = geometry_msgs::msg::Twist;
 
@@ -39,8 +37,6 @@ public:
         create3_examples_msgs::action::Coverage::Goal goal,
         rclcpp::Clock::SharedPtr clock,
         rclcpp::Logger logger,
-//        rclcpp_action::Client<DockAction>::SharedPtr dock_action_client,
-//        rclcpp_action::Client<UndockAction>::SharedPtr undock_action_client,
         rclcpp_action::Client<WallFollowAction>::SharedPtr wall_follow_action_client,
         rclcpp::Publisher<TwistMsg>::SharedPtr cmd_vel_publisher,
         bool has_reflexes);
@@ -60,8 +56,6 @@ private:
 
     void select_next_behavior(const Behavior::Data& data);
 
-//    void goto_dock();
-
     void goto_wall_follow(const WallFollowBehavior::Config& config);
 
 	void goto_wait();
@@ -72,8 +66,6 @@ private:
 
     void goto_spiral(const SpiralBehavior::Config& config = SpiralBehavior::Config());
 
-//    void goto_undock();
-
 	double compute_rotation(const geometry_msgs::msg::Pose& pose, double angleDegrees);
 	
     double compute_evade_rotation(const geometry_msgs::msg::Pose& pose, double resolution);
@@ -81,7 +73,6 @@ private:
     std::shared_ptr<Behavior> m_current_behavior;
     State m_behavior_state;
 
-//    bool m_undocking;
     rclcpp::Time m_last_spiral_time;
     bool m_preparing_spiral;
     std::vector<double> m_evade_attempts;
@@ -91,8 +82,6 @@ private:
     rclcpp::Time m_start_time;
     bool m_has_reflexes;
 
-//    rclcpp_action::Client<DockAction>::SharedPtr m_dock_action_client;
-//    rclcpp_action::Client<UndockAction>::SharedPtr m_undock_action_client;
     rclcpp_action::Client<WallFollowAction>::SharedPtr m_wall_follow_action_client;
     rclcpp::Publisher<TwistMsg>::SharedPtr m_cmd_vel_publisher;
     rclcpp::Logger m_logger;
