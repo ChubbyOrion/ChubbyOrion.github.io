@@ -3,4 +3,26 @@ h1 {
   block-size: fit-content;
   background-image: linear-gradient(to right, #29a19c, #a3f7bf);  
 }
+header {
+    justify-content: left;
+    list-style: none;
+    width: 100%;
+}
+li {
+    display: inline;
+    list-style-type: none;
+}
 
+.active {
+    border-color: #a3f7bf;
+}
+
+a {
+    list-style-type: none;
+    color: white;
+    border: 2px solid #4b6289;
+}
+
+a:hover {
+    border-color: aqua;
+}
