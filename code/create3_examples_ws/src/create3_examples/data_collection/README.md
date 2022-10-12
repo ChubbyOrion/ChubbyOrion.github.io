@@ -1,32 +1,33 @@
-# iRobot® Create® 3 Coverage
+# Data collection
 
-This example creates a ROS 2 action server that runs a simple non-systematic coverage algorithm on your Create® 3.
-
-The purpose of this example is to show how to command your robot and react to its hazard information.
+This code collects data for our Bayesian network. This is mainly in `data_collection` but it also uses the
+`create_examples_msgs` files. The `data_collection` is adapted from `../../../create3_coverage/`.
 
 ### How to use
 
-Build this and the `create3_examples_msgs` packages.
+Build this and the `../../../ros2_ws/` packages. The `ros2_ws` includes the irobot_create_msgs.
 Source the setup shell scripts.
 
 Start the coverage action server
 
 ```bash
-ros2 run create3_coverage create3_coverage
+ros2 run data_collection data_collection
 ```
 
-In a separate terminal command a coverage action
+In a separate terminal command a data collection
 
 ```bash
-ros2 action send_goal /coverage create3_examples_msgs/action/Coverage "{explore_duration:{sec: 500, nanosec: 0}, max_runtime:{sec: 1000,nanosec: 0}}"
+ros2 action send_goal /coverage create3_examples_msgs/action/Coverage "{max_runtime:{sec: 3600,nanosec: 0}, max_wall_follow_runtime:{sec: 20, nanosec: 0}, wall_follow_side: 1, print_duration: {sec: 0, nanosec: 10000000}}"
 ```
+
+The configuration is in `max_runtime` for the maximum runtime to have. The `max_wall_follow_runtime` determines how long to follow the wall. `wall_follow_side` is the same variable as the normal wall follow action argument except 0 has special meaning for debugging. `print_duration` is a duration to use when printing the collected sensor values.
 
 ### Robot initial configuration
 
 **NOTES:**
  - Do not start the behavior with the robot undocked, but very close to the dock. The behavior may fail or it may cause the robot to run over its dock.
- It's safe to start with the robot still docked.
  - Do not start the behavior with the robot in contact with obstacles or cliffs.
+ - Do not start the behavior with the robot docked.
 
 
 ### Troubleshooting
