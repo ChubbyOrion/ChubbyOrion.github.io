@@ -11,7 +11,7 @@ h1 {
   background-image: linear-gradient(to right, #29a19c, #a3f7bf);  
 }
 main {
-    text-align: center;
+    text-align: left;
     grid-area: main;
     padding: 2em;
     margin-bottom: 2em;
