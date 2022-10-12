@@ -1,0 +1,100 @@
+[INFO] [1665516313.248000316] [data_collection]: 
+ir_intensity_side_left,1634
+ir_intensity_left,83
+ir_intensity_front_left,26
+ir_intensity_front_center_left,40
+ir_intensity_front_center_right,14
+ir_intensity_front_right,0
+ir_intensity_right,6
+
+
+[INFO] [1665516313.348048107] [data_collection]: 
+ir_intensity_side_left,1630
+ir_intensity_left,84
+ir_intensity_front_left,22
+ir_intensity_front_center_left,40
+ir_intensity_front_center_right,12
+ir_intensity_front_right,0
+ir_intensity_right,3
+
+
+[INFO] [1665516313.448182834] [data_collection]: 
+ir_intensity_side_left,1630
+ir_intensity_left,87
+ir_intensity_front_left,25
+ir_intensity_front_center_left,42
+ir_intensity_front_center_right,12
+ir_intensity_front_right,1
+ir_intensity_right,5
+
+
+[INFO] [1665516313.581462562] [data_collection]: 
+ir_intensity_side_left,1629
+ir_intensity_left,88
+ir_intensity_front_left,25
+ir_intensity_front_center_left,44
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,2
+
+
+[INFO] [1665516313.681504329] [data_collection]: 
+ir_intensity_side_left,1634
+ir_intensity_left,84
+ir_intensity_front_left,25
+ir_intensity_front_center_left,42
+ir_intensity_front_center_right,14
+ir_intensity_front_right,0
+ir_intensity_right,4
+
+
+[INFO] [1665516313.814673915] [data_collection]: 
+ir_intensity_side_left,1633
+ir_intensity_left,84
+ir_intensity_front_left,22
+ir_intensity_front_center_left,40
+ir_intensity_front_center_right,11
+ir_intensity_front_right,1
+ir_intensity_right,2
+
+
+[INFO] [1665516313.914690095] [data_collection]: 
+ir_intensity_side_left,1627
+ir_intensity_left,85
+ir_intensity_front_left,21
+ir_intensity_front_center_left,42
+ir_intensity_front_center_right,9
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516314.014714274] [data_collection]: 
+ir_intensity_side_left,1629
+ir_intensity_left,88
+ir_intensity_front_left,22
+ir_intensity_front_center_left,44
+ir_intensity_front_center_right,11
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516314.148026858] [data_collection]: 
+ir_intensity_side_left,1634
+ir_intensity_left,87
+ir_intensity_front_left,25
+ir_intensity_front_center_left,42
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,5
+
+
+[INFO] [1665516314.248053425] [data_collection]: 
+ir_intensity_side_left,1633
+ir_intensity_left,85
+ir_intensity_front_left,23
+ir_intensity_front_center_left,43
+ir_intensity_front_center_right,14
+ir_intensity_front_right,3
+ir_intensity_right,4
+
+
