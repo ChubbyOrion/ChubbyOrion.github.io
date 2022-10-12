@@ -46,10 +46,56 @@
         <li>
             <a href="https://github.com/ChubbyOrion/ChubbyOrion.github.io">Measurements</a>
             <br/>
-            <p></p>
+            <p>
+                If you want to take measurements using the code you have to download all the workspaces and then source the setup files.
+                As well as have ROS2 downloaded.
+            </p>     
+            <p>
+                The folder structure is as follows: 
+                <ul>
+                    <li>
+                        create3_coverage
+                        <br/>
+                        <p>This is a workspace for the original example code provided by the Create team that we adapted into our data-gathering code.</p>
+                    </li>
+                    <li>
+                        create3_examples_ws
+                        <br/>
+                        <p>This is a workspace for our data collection code adapted from the Create examples provided by the Create team.</p>
+                    </li>
+                    <li>
+                        create3_workspace
+                        <br/>
+                        <p>This is a workspace for the Create robot simulator. We used this a few times when developing the code</p>
+                    </li>
+                    <li>
+                        door_data
+                        <br/>
+                        <p>This is all of our collected data from the robot that we gathered during training.</p>
+                    </li>
+                    <li>
+                        ros2_ws
+                        <br/>
+                        <p>This is a workspace that has the specialized irobot_create_msgs which are customized actions, topics, and messages that the robot uses to communicate in ROS.</p>
+                    </li>
+                    <li>
+                        ros_ign
+                        <br/>
+                        <p>This is a workspace that contains code for linking ROS to Gazebo. This is used by the simulator code.</p>
+                    </li>
+                    <li>
+                        workspace
+                        <br/>
+                        <p>This is a workspace containing Gazebo support code. This is used by the simulator code.</p>
+                    </li>
+            </ul>
+            </p>
         </li>
         <li><a href="https://github.com/ChubbyOrion/ChubbyOrion.github.io">CPTs of Bayesian Network</a></li>
         <li><a href="https://github.com/ChubbyOrion/ChubbyOrion.github.io">Compute Sensor Fusion</a></li>
+        <li><a href="code/python/dist_from_wall.py">Computing and Graphing actual distance from wall as a probability distribution</a>
+            <br/>
+        </li>
     </ul>
 </main>
 </body>
