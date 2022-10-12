@@ -1,0 +1,1898 @@
+[INFO] [1665516623.707717815] [data_collection]: Node created!
+[INFO] [1665516627.248142686] [data_collection]: Sent request to reset pose!
+[INFO] [1665516627.248190428] [data_collection]: Accepting goal request
+[INFO] [1665516627.248569274] [data_collection]: Executing goal
+[INFO] [1665516627.263717581] [data_collection]: Reflexes are enabled on the robot!
+[INFO] [1665516627.382383870] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,48
+ir_intensity_front_left,21
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,5
+ir_intensity_right,2
+
+
+[INFO] [1665516627.515639150] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,45
+ir_intensity_front_left,19
+ir_intensity_front_center_left,28
+ir_intensity_front_center_right,11
+ir_intensity_front_right,1
+ir_intensity_right,2
+
+
+[INFO] [1665516627.648981047] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,11
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516627.748990227] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,47
+ir_intensity_front_left,17
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,10
+ir_intensity_front_right,0
+ir_intensity_right,0
+
+
+[INFO] [1665516627.882326144] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,46
+ir_intensity_front_left,18
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,9
+ir_intensity_front_right,0
+ir_intensity_right,0
+
+
+[INFO] [1665516628.015628550] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,46
+ir_intensity_front_left,18
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,9
+ir_intensity_front_right,0
+ir_intensity_right,0
+
+
+[INFO] [1665516628.148985016] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,49
+ir_intensity_front_left,20
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,1
+ir_intensity_right,2
+
+
+[INFO] [1665516628.282330914] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516628.415631004] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,47
+ir_intensity_front_left,16
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,10
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516628.515633627] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,48
+ir_intensity_front_left,20
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,14
+ir_intensity_front_right,2
+ir_intensity_right,3
+
+
+[INFO] [1665516628.615638126] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,15
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516628.748960408] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,46
+ir_intensity_front_left,20
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,10
+ir_intensity_front_right,3
+ir_intensity_right,3
+
+
+[INFO] [1665516628.848987293] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,9
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516628.982331084] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,9
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516629.115560225] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,14
+ir_intensity_front_right,4
+ir_intensity_right,2
+
+
+[INFO] [1665516629.215628682] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,28
+ir_intensity_front_center_right,10
+ir_intensity_front_right,0
+ir_intensity_right,3
+
+
+[INFO] [1665516629.315633726] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,47
+ir_intensity_front_left,17
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,0
+ir_intensity_right,2
+
+
+[INFO] [1665516629.448957389] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,49
+ir_intensity_front_left,20
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516629.548981699] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,19
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,10
+ir_intensity_front_right,6
+ir_intensity_right,0
+
+
+[INFO] [1665516629.682335838] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,49
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,2
+
+
+[INFO] [1665516629.815502348] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,47
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,11
+ir_intensity_front_right,3
+ir_intensity_right,1
+
+
+[INFO] [1665516629.915557066] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,1
+ir_intensity_right,4
+
+
+[INFO] [1665516630.015600610] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,50
+ir_intensity_front_left,17
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,9
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516630.115645659] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,19
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,12
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516630.248947772] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,11
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516630.382342345] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,51
+ir_intensity_front_left,17
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,8
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516630.515626775] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,51
+ir_intensity_front_left,17
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,9
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516630.615652821] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,9
+ir_intensity_front_right,3
+ir_intensity_right,1
+
+
+[INFO] [1665516630.748910186] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516630.848963058] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,12
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516630.948966389] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,49
+ir_intensity_front_left,17
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,8
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516631.082309012] [data_collection]: 
+ir_intensity_side_left,412
+ir_intensity_left,48
+ir_intensity_front_left,20
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,4
+
+
+[INFO] [1665516631.215535738] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,45
+ir_intensity_front_left,18
+ir_intensity_front_center_left,27
+ir_intensity_front_center_right,10
+ir_intensity_front_right,0
+ir_intensity_right,2
+
+
+[INFO] [1665516631.315622450] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,16
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,11
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516631.448956930] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,46
+ir_intensity_front_left,18
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,9
+ir_intensity_front_right,0
+ir_intensity_right,0
+
+
+[INFO] [1665516631.582338072] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,2
+
+
+[INFO] [1665516631.715637491] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,47
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,0
+ir_intensity_right,2
+
+
+[INFO] [1665516631.848989037] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,46
+ir_intensity_front_left,17
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,1
+
+
+[INFO] [1665516631.982218794] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,49
+ir_intensity_front_left,16
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,9
+ir_intensity_front_right,2
+ir_intensity_right,1
+
+
+[INFO] [1665516632.115630300] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,10
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516632.215638802] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516632.348967262] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,51
+ir_intensity_front_left,17
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,10
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516632.448979885] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,49
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,1
+ir_intensity_right,3
+
+
+[INFO] [1665516632.582283083] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,50
+ir_intensity_front_left,16
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,8
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516632.715622527] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,49
+ir_intensity_front_left,14
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516632.815629024] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,46
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,9
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516632.948977777] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,48
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,3
+ir_intensity_right,3
+
+
+[INFO] [1665516633.082316048] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,44
+ir_intensity_front_left,17
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,11
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516633.215626845] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,16
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,10
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516633.315630734] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,48
+ir_intensity_front_left,17
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,9
+ir_intensity_front_right,0
+ir_intensity_right,1
+
+
+[INFO] [1665516633.448971545] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,20
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,14
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516633.582182798] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,46
+ir_intensity_front_left,20
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516633.682333632] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,50
+ir_intensity_front_left,18
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,10
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516633.815630119] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,1
+
+
+[INFO] [1665516633.948972795] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,16
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,10
+ir_intensity_front_right,3
+ir_intensity_right,1
+
+
+[INFO] [1665516634.048979854] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,50
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,2
+
+
+[INFO] [1665516634.148983569] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,5
+ir_intensity_right,2
+
+
+[INFO] [1665516634.282329254] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,16
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,9
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516634.415523827] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516634.515629605] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516634.648986106] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,52
+ir_intensity_front_left,16
+ir_intensity_front_center_left,35
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516634.782339327] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,19
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516634.915612107] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,1
+
+
+[INFO] [1665516635.048983770] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516635.182178222] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,20
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,3
+
+
+[INFO] [1665516635.282334339] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,49
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,1
+
+
+[INFO] [1665516635.415518715] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,50
+ir_intensity_front_left,16
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516635.515632013] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,45
+ir_intensity_front_left,20
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,9
+ir_intensity_front_right,1
+ir_intensity_right,1
+
+
+[INFO] [1665516635.648982249] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,16
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,9
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516635.748983150] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,48
+ir_intensity_front_left,17
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,9
+ir_intensity_front_right,1
+ir_intensity_right,0
+
+
+[INFO] [1665516635.882350485] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,44
+ir_intensity_front_left,18
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,12
+ir_intensity_front_right,0
+ir_intensity_right,3
+
+
+[INFO] [1665516636.015476515] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,45
+ir_intensity_front_left,20
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,12
+ir_intensity_front_right,1
+ir_intensity_right,1
+
+
+[INFO] [1665516636.115638345] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516636.248972257] [data_collection]: 
+ir_intensity_side_left,412
+ir_intensity_left,47
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,3
+
+
+[INFO] [1665516636.382218101] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,2
+
+
+[INFO] [1665516636.482336071] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,2
+
+
+[INFO] [1665516636.615535498] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516636.715641073] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,46
+ir_intensity_front_left,20
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,3
+
+
+[INFO] [1665516636.848973318] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,9
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516636.982327592] [data_collection]: 
+ir_intensity_side_left,404
+ir_intensity_left,48
+ir_intensity_front_left,16
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,8
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516637.082338161] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,16
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,8
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516637.215609780] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,46
+ir_intensity_front_left,17
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516637.315626836] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,8
+ir_intensity_front_right,3
+ir_intensity_right,1
+
+
+[INFO] [1665516637.448982216] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,47
+ir_intensity_front_left,18
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,12
+ir_intensity_front_right,0
+ir_intensity_right,2
+
+
+[INFO] [1665516637.582304547] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516637.682328649] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,17
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,8
+ir_intensity_front_right,1
+ir_intensity_right,0
+
+
+[INFO] [1665516637.815625662] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,16
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,10
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516637.915627545] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,49
+ir_intensity_front_left,16
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,11
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516638.015631452] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,48
+ir_intensity_front_left,16
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,8
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516638.148976442] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,14
+ir_intensity_front_right,1
+ir_intensity_right,3
+
+
+[INFO] [1665516638.248984285] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,20
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516638.382222559] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,43
+ir_intensity_front_left,18
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,8
+ir_intensity_front_right,0
+ir_intensity_right,0
+
+
+[INFO] [1665516638.482327055] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,9
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516638.615593216] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,49
+ir_intensity_front_left,16
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,11
+ir_intensity_front_right,5
+ir_intensity_right,2
+
+
+[INFO] [1665516638.748987131] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,17
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,10
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516638.882324173] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,49
+ir_intensity_front_left,21
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,3
+
+
+[INFO] [1665516639.015632517] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,47
+ir_intensity_front_left,21
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,2
+
+
+[INFO] [1665516639.148964070] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,17
+ir_intensity_front_center_left,28
+ir_intensity_front_center_right,12
+ir_intensity_front_right,1
+ir_intensity_right,0
+
+
+[INFO] [1665516639.248977506] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,47
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,10
+ir_intensity_front_right,2
+ir_intensity_right,1
+
+
+[INFO] [1665516639.382341796] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,49
+ir_intensity_front_left,16
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,11
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516639.515623308] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,50
+ir_intensity_front_left,16
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,8
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516639.615625733] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,12
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516639.715641735] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,50
+ir_intensity_front_left,17
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,9
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516639.848977539] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,50
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,11
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516639.982323302] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,51
+ir_intensity_front_left,15
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,10
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516640.115622089] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,46
+ir_intensity_front_left,18
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,12
+ir_intensity_front_right,0
+ir_intensity_right,0
+
+
+[INFO] [1665516640.248986220] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,50
+ir_intensity_front_left,15
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,8
+ir_intensity_front_right,6
+ir_intensity_right,0
+
+
+[INFO] [1665516640.382231761] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,19
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,3
+ir_intensity_right,2
+
+
+[INFO] [1665516640.482349996] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,50
+ir_intensity_front_left,17
+ir_intensity_front_center_left,36
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516640.615532910] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,46
+ir_intensity_front_left,19
+ir_intensity_front_center_left,28
+ir_intensity_front_center_right,10
+ir_intensity_front_right,0
+ir_intensity_right,1
+
+
+[INFO] [1665516640.748956697] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,15
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,9
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516640.882323709] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,47
+ir_intensity_front_left,20
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,12
+ir_intensity_front_right,0
+ir_intensity_right,3
+
+
+[INFO] [1665516641.015624448] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,49
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516641.149033021] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,10
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516641.282244921] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516641.382331338] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,47
+ir_intensity_front_left,21
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,12
+ir_intensity_front_right,1
+ir_intensity_right,0
+
+
+[INFO] [1665516641.482338845] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,10
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516641.615606300] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,47
+ir_intensity_front_left,20
+ir_intensity_front_center_left,28
+ir_intensity_front_center_right,10
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516641.748973989] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,50
+ir_intensity_front_left,14
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,8
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516641.882332036] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,10
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516642.015606131] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516642.115627803] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,46
+ir_intensity_front_left,20
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,12
+ir_intensity_front_right,0
+ir_intensity_right,4
+
+
+[INFO] [1665516642.215629423] [data_collection]: 
+ir_intensity_side_left,402
+ir_intensity_left,49
+ir_intensity_front_left,16
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,8
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516642.348942389] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,46
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,11
+ir_intensity_front_right,4
+ir_intensity_right,4
+
+
+[INFO] [1665516642.448978470] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,9
+ir_intensity_front_right,0
+ir_intensity_right,2
+
+
+[INFO] [1665516642.582326483] [data_collection]: 
+ir_intensity_side_left,404
+ir_intensity_left,49
+ir_intensity_front_left,14
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,10
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516642.715621027] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,49
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,14
+ir_intensity_front_right,4
+ir_intensity_right,5
+
+
+[INFO] [1665516642.849012961] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,16
+ir_intensity_front_center_left,35
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,1
+
+
+[INFO] [1665516642.982336362] [data_collection]: 
+ir_intensity_side_left,403
+ir_intensity_left,49
+ir_intensity_front_left,17
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,11
+ir_intensity_front_right,1
+ir_intensity_right,0
+
+
+[INFO] [1665516643.115589474] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,3
+ir_intensity_right,3
+
+
+[INFO] [1665516643.248989320] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,45
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,1
+ir_intensity_right,2
+
+
+[INFO] [1665516643.348991307] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516643.482357730] [data_collection]: 
+ir_intensity_side_left,404
+ir_intensity_left,50
+ir_intensity_front_left,16
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,8
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516643.615614925] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,46
+ir_intensity_front_left,19
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,11
+ir_intensity_front_right,0
+ir_intensity_right,1
+
+
+[INFO] [1665516643.715626453] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,49
+ir_intensity_front_left,21
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,14
+ir_intensity_front_right,5
+ir_intensity_right,2
+
+
+[INFO] [1665516643.848982803] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,50
+ir_intensity_front_left,20
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,2
+
+
+[INFO] [1665516643.982265986] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,17
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,9
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516644.082333889] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,46
+ir_intensity_front_left,20
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516644.182348251] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,2
+
+
+[INFO] [1665516644.315586649] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,50
+ir_intensity_front_left,14
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,8
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516644.415616484] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516644.548984657] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,17
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,9
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516644.648988441] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,50
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516644.782328773] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,47
+ir_intensity_front_left,18
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,13
+ir_intensity_front_right,5
+ir_intensity_right,1
+
+
+[INFO] [1665516644.882353558] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,28
+ir_intensity_front_center_right,11
+ir_intensity_front_right,1
+ir_intensity_right,2
+
+
+[INFO] [1665516645.015635287] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,47
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,3
+
+
+[INFO] [1665516645.148948021] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,50
+ir_intensity_front_left,18
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,3
+
+
+[INFO] [1665516645.248969881] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,47
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,11
+ir_intensity_front_right,1
+ir_intensity_right,0
+
+
+[INFO] [1665516645.348975076] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,14
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,10
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516645.448980766] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,3
+ir_intensity_right,2
+
+
+[INFO] [1665516645.582238012] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,19
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,11
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516645.682334410] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,49
+ir_intensity_front_left,14
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,7
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516645.815644858] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,50
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,11
+ir_intensity_front_right,6
+ir_intensity_right,2
+
+
+[INFO] [1665516645.948976294] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,50
+ir_intensity_front_left,17
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516646.048987024] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,9
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516646.182326024] [data_collection]: 
+ir_intensity_side_left,405
+ir_intensity_left,50
+ir_intensity_front_left,16
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,11
+ir_intensity_front_right,3
+ir_intensity_right,1
+
+
+[INFO] [1665516646.282340856] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,1
+
+
+[INFO] [1665516646.415540803] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,2
+
+
+[INFO] [1665516646.515541998] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,50
+ir_intensity_front_left,19
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,14
+ir_intensity_front_right,0
+ir_intensity_right,4
+
+
+[INFO] [1665516646.648981970] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,10
+ir_intensity_front_right,0
+ir_intensity_right,0
+
+
+[INFO] [1665516646.748981994] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,17
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,10
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516646.882321849] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,49
+ir_intensity_front_left,19
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,1
+
+
+[INFO] [1665516646.982326853] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516647.082338859] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,10
+ir_intensity_front_right,2
+ir_intensity_right,1
+
+
+[INFO] [1665516647.215630979] [data_collection]: 
+ir_intensity_side_left,404
+ir_intensity_left,50
+ir_intensity_front_left,13
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516647.315643721] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,46
+ir_intensity_front_left,17
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516647.448981616] [data_collection]: 
+ir_intensity_side_left,404
+ir_intensity_left,50
+ir_intensity_front_left,15
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,10
+ir_intensity_front_right,5
+ir_intensity_right,0
+
+
+[INFO] [1665516647.548984032] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,50
+ir_intensity_front_left,19
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,13
+ir_intensity_front_right,3
+ir_intensity_right,3
+
+
+[INFO] [1665516647.682312143] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,2
+ir_intensity_right,3
+
+
+[INFO] [1665516647.782341740] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,47
+ir_intensity_front_left,18
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,12
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516647.882343561] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,46
+ir_intensity_front_left,17
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,12
+ir_intensity_front_right,1
+ir_intensity_right,1
+
+
+[INFO] [1665516648.015527456] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,46
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516648.115535700] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,2
+
+
+[INFO] [1665516648.248955938] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,46
+ir_intensity_front_left,20
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,11
+ir_intensity_front_right,0
+ir_intensity_right,2
+
+
+[INFO] [1665516648.348988602] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,48
+ir_intensity_front_left,18
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,14
+ir_intensity_front_right,4
+ir_intensity_right,4
+
+
+[INFO] [1665516648.482364430] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,49
+ir_intensity_front_left,20
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,12
+ir_intensity_front_right,3
+ir_intensity_right,1
+
+
+[INFO] [1665516648.615541294] [data_collection]: 
+ir_intensity_side_left,404
+ir_intensity_left,51
+ir_intensity_front_left,16
+ir_intensity_front_center_left,35
+ir_intensity_front_center_right,9
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516648.715610892] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,44
+ir_intensity_front_left,18
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,13
+ir_intensity_front_right,0
+ir_intensity_right,1
+
+
+[INFO] [1665516648.815624094] [data_collection]: 
+ir_intensity_side_left,410
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,1
+
+
+[INFO] [1665516648.915629533] [data_collection]: 
+ir_intensity_side_left,404
+ir_intensity_left,49
+ir_intensity_front_left,15
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,11
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516649.048978122] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,46
+ir_intensity_front_left,18
+ir_intensity_front_center_left,32
+ir_intensity_front_center_right,9
+ir_intensity_front_right,1
+ir_intensity_right,0
+
+
+[INFO] [1665516649.148981568] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,47
+ir_intensity_front_left,19
+ir_intensity_front_center_left,29
+ir_intensity_front_center_right,10
+ir_intensity_front_right,0
+ir_intensity_right,3
+
+
+[INFO] [1665516649.282312043] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,50
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,4
+ir_intensity_right,3
+
+
+[INFO] [1665516649.382347642] [data_collection]: 
+ir_intensity_side_left,406
+ir_intensity_left,49
+ir_intensity_front_left,15
+ir_intensity_front_center_left,34
+ir_intensity_front_center_right,9
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516649.515538473] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,48
+ir_intensity_front_left,15
+ir_intensity_front_center_left,31
+ir_intensity_front_center_right,9
+ir_intensity_front_right,3
+ir_intensity_right,0
+
+
+[INFO] [1665516649.648960324] [data_collection]: 
+ir_intensity_side_left,411
+ir_intensity_left,50
+ir_intensity_front_left,20
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,13
+ir_intensity_front_right,3
+ir_intensity_right,4
+
+
+[INFO] [1665516649.782314661] [data_collection]: 
+ir_intensity_side_left,407
+ir_intensity_left,49
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,12
+ir_intensity_front_right,4
+ir_intensity_right,0
+
+
+[INFO] [1665516649.882351634] [data_collection]: 
+ir_intensity_side_left,409
+ir_intensity_left,48
+ir_intensity_front_left,20
+ir_intensity_front_center_left,30
+ir_intensity_front_center_right,13
+ir_intensity_front_right,3
+ir_intensity_right,2
+
+
+[INFO] [1665516650.015521043] [data_collection]: 
+ir_intensity_side_left,408
+ir_intensity_left,48
+ir_intensity_front_left,19
+ir_intensity_front_center_left,33
+ir_intensity_front_center_right,10
+ir_intensity_front_right,2
+ir_intensity_right,0
+
+
+[INFO] [1665516650.112363109] [data_collection]: Received request to cancel goal
+[INFO] [1665516650.115925541] [data_collection]: Goal canceled!
+[INFO] [1665516651.264871441] [rclcpp]: signal_handler(signum=2)
