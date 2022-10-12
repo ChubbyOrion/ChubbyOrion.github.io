@@ -32,13 +32,14 @@ def main():
         line = line.split(",")
         try:
             z = line[64]
+            ts = line[0].split()[1]
         except IndexError as e:
             continue
         states.append(direction(float(z), .05))
         if len(states) == NSTATES:
             predicted = numpy.char.equal(model.predict([states[:NSTATES] + [None]])[-1][-1], "True")
             if predicted:
-                print("Door")
+                print(f"{ts} Door")
             states.pop(0)
 
 
