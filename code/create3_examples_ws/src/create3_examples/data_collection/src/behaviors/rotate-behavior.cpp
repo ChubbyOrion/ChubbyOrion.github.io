@@ -52,6 +52,7 @@ State RotateBehavior::execute(const Data & data)
     tf2::Quaternion relative_orientation = current_orientation * m_initial_orientation.inverse();
 
     double relative_yaw = tf2::getYaw(relative_orientation);
+	RCLCPP_INFO(m_logger, "Relative yaw: %f. Target: %f", relative_yaw, m_config.target_rotation);
     if (std::abs(relative_yaw) >= std::abs(m_config.target_rotation)) {
         RCLCPP_INFO(m_logger, "Rotation completed: from %f to %f",
             tf2::getYaw(m_initial_orientation), tf2::getYaw(current_orientation));

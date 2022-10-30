@@ -48,8 +48,10 @@ add_library(${library_name} SHARED
     src/behaviors/wall-follow-behavior.cpp
 	src/behaviors/wait-behavior.cpp
     src/behaviors/utils.cpp
-    src/coverage_state_machine.cpp
+	src/wall_follow_state_machine.cpp
+	src/rotate_state_machine.cpp
     src/create3_coverage_node.cpp
+	src/rotate_node.cpp
 )
 target_include_directories(${library_name} PUBLIC include)
 ament_target_dependencies(${library_name} ${dependencies})

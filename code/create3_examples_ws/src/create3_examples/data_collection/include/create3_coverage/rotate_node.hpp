@@ -7,7 +7,6 @@
 #include <mutex>
 
 #include "create3_coverage/behaviors/behavior.hpp"
-#include "create3_examples_msgs/action/wall_follow.hpp"
 #include "create3_examples_msgs/action/rotate.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "irobot_create_msgs/action/dock.hpp"
@@ -26,16 +25,15 @@
 
 namespace create3_coverage {
 
-class Create3CoverageNode : public rclcpp::Node
+class RotateNode : public rclcpp::Node
 {
 public:
     /** @brief Node constructor, initializes ROS 2 entities */
-    Create3CoverageNode();
+    RotateNode();
 
 private:
-    using InternalWallFollowAction = create3_examples_msgs::action::WallFollow;
 	using InternalRotateAction = create3_examples_msgs::action::Rotate;
-    using GoalHandleWallFollow = rclcpp_action::ServerGoalHandle<InternalWallFollowAction>;
+    using GoalHandleRotate = rclcpp_action::ServerGoalHandle<InternalRotateAction>;
 
     using WallFollowAction = irobot_create_msgs::action::WallFollow;
     using HazardMsg = irobot_create_msgs::msg::HazardDetectionVector;
@@ -55,15 +53,15 @@ private:
     rclcpp_action::GoalResponse
     handle_goal(
         const rclcpp_action::GoalUUID& uuid,
-        std::shared_ptr<const InternalWallFollowAction::Goal> goal);
+        std::shared_ptr<const InternalRotateAction::Goal> goal);
 
     rclcpp_action::CancelResponse
     handle_cancel(
-        const std::shared_ptr<GoalHandleWallFollow> goal_handle);
+        const std::shared_ptr<GoalHandleRotate> goal_handle);
 
-    void handle_accepted(const std::shared_ptr<GoalHandleWallFollow> goal_handle);
+    void handle_accepted(const std::shared_ptr<GoalHandleRotate> goal_handle);
 
-    void execute(const std::shared_ptr<GoalHandleWallFollow> goal_handle);
+    void execute(const std::shared_ptr<GoalHandleRotate> goal_handle);
 
     void hazards_callback(HazardMsg::ConstSharedPtr msg);
 
@@ -94,7 +92,7 @@ private:
     std::vector<OpCodeMsg> m_last_opcodes;
     rclcpp::Time m_last_opcodes_cleared_time;
 
-    rclcpp_action::Server<InternalWallFollowAction>::SharedPtr m_coverage_action_server;
+    rclcpp_action::Server<InternalRotateAction>::SharedPtr m_coverage_action_server;
 
     rclcpp_action::Client<WallFollowAction>::SharedPtr m_wall_follow_action_client;
 

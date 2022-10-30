@@ -1,7 +1,7 @@
 // Copyright 2021 iRobot Corporation. All Rights Reserved.
 
-#include "create3_coverage/wall_follow_state_machine.hpp"
-#include "create3_coverage/create3_coverage_node.hpp"
+#include "create3_coverage/rotate_state_machine.hpp"
+#include "create3_coverage/rotate_node.hpp"
 
 #include "behaviors/utils.hpp"
 
@@ -10,18 +10,18 @@ using std::placeholders::_2;
 
 namespace create3_coverage {
 
-Create3CoverageNode::Create3CoverageNode()
+RotateNode::RotateNode()
 : rclcpp::Node("data_collection")
 {
-    m_coverage_action_server = rclcpp_action::create_server<InternalWallFollowAction>(
+    m_coverage_action_server = rclcpp_action::create_server<InternalRotateAction>(
         this->get_node_base_interface(),
         this->get_node_clock_interface(),
         this->get_node_logging_interface(),
         this->get_node_waitables_interface(),
-        "coverage",
-        std::bind(&Create3CoverageNode::handle_goal, this, _1, _2),
-        std::bind(&Create3CoverageNode::handle_cancel, this, _1),
-        std::bind(&Create3CoverageNode::handle_accepted, this, _1));
+        "rotate",
+        std::bind(&RotateNode::handle_goal, this, _1, _2),
+        std::bind(&RotateNode::handle_cancel, this, _1),
+        std::bind(&RotateNode::handle_accepted, this, _1));
 
     m_wall_follow_action_client = rclcpp_action::create_client<WallFollowAction>(
         this->get_node_base_interface(),
@@ -47,32 +47,32 @@ Create3CoverageNode::Create3CoverageNode()
     m_hazards_subscription = this->create_subscription<HazardMsg>(
         "hazard_detection",
         rclcpp::SensorDataQoS(),
-        std::bind(&Create3CoverageNode::hazards_callback, this, _1));
+        std::bind(&RotateNode::hazards_callback, this, _1));
 
     m_ir_opcode_subscription = this->create_subscription<OpCodeMsg>(
         "ir_opcode",
         rclcpp::SensorDataQoS(),
-        std::bind(&Create3CoverageNode::ir_opcode_callback, this, _1));
+        std::bind(&RotateNode::ir_opcode_callback, this, _1));
 
     m_odom_subscription = this->create_subscription<OdometryMsg>(
         "odom",
         rclcpp::SensorDataQoS(),
-        std::bind(&Create3CoverageNode::odom_callback, this, _1));
+        std::bind(&RotateNode::odom_callback, this, _1));
 
     m_kidnap_subscription = this->create_subscription<KidnapMsg>(
         "kidnap_status",
         rclcpp::SensorDataQoS(),
-        std::bind(&Create3CoverageNode::kidnap_callback, this, _1));
+        std::bind(&RotateNode::kidnap_callback, this, _1));
 
     m_ir_intensity_vector_subscription = this->create_subscription<IrIntensityVectorMsg>(
         "ir_intensity",
         rclcpp::SensorDataQoS(),
-        std::bind(&Create3CoverageNode::ir_intensity_vector_callback, this, _1));
+        std::bind(&RotateNode::ir_intensity_vector_callback, this, _1));
 
 	m_interface_buttons_subscription = this->create_subscription<InterfaceButtonsMsg>(
 		"interface_buttons",
 		rclcpp::SensorDataQoS(),
-	    std::bind(&Create3CoverageNode::interface_buttons_callback, this, _1));
+	    std::bind(&RotateNode::interface_buttons_callback, this, _1));
 	
     m_rate_hz = this->declare_parameter<double>("rate_hz", 30);
     m_opcodes_buffer_ms = this->declare_parameter<int>("opcodes_buffer_ms", 200);
@@ -85,9 +85,9 @@ Create3CoverageNode::Create3CoverageNode()
 }
 
 rclcpp_action::GoalResponse
-Create3CoverageNode::handle_goal(
+RotateNode::handle_goal(
     const rclcpp_action::GoalUUID& uuid,
-    std::shared_ptr<const InternalWallFollowAction::Goal> goal)
+    std::shared_ptr<const InternalRotateAction::Goal> goal)
 {
     (void)uuid;
     (void)goal;
@@ -117,8 +117,8 @@ Create3CoverageNode::handle_goal(
 }
 
 rclcpp_action::CancelResponse
-Create3CoverageNode::handle_cancel(
-    const std::shared_ptr<GoalHandleWallFollow> goal_handle)
+RotateNode::handle_cancel(
+    const std::shared_ptr<GoalHandleRotate> goal_handle)
 {
     (void)goal_handle;
 
@@ -126,13 +126,13 @@ Create3CoverageNode::handle_cancel(
     return rclcpp_action::CancelResponse::ACCEPT;
 }
 
-void Create3CoverageNode::handle_accepted(const std::shared_ptr<GoalHandleWallFollow> goal_handle)
+void RotateNode::handle_accepted(const std::shared_ptr<GoalHandleRotate> goal_handle)
 {
     // this needs to return quickly to avoid blocking the executor, so spin up a new thread
-    std::thread{std::bind(&Create3CoverageNode::execute, this, _1), goal_handle}.detach();
+    std::thread{std::bind(&RotateNode::execute, this, _1), goal_handle}.detach();
 }
 
-void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleWallFollow> goal_handle)
+void RotateNode::execute(const std::shared_ptr<GoalHandleRotate> goal_handle)
 {
     RCLCPP_INFO(this->get_logger(), "Executing goal");
 
@@ -143,7 +143,7 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleWallFollow> go
     // Check if the robot has reflexes enabled or if we need to manually handle hazards
     bool robot_has_reflexes = this->reflexes_setup();
 
-    auto state_machine = std::make_unique<WallFollowStateMachine>(
+    auto state_machine = std::make_unique<RotateStateMachine>(
         *goal,
         this->get_clock(),
         this->get_logger(),
@@ -151,7 +151,7 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleWallFollow> go
         m_cmd_vel_publisher,
         robot_has_reflexes);
 
-    WallFollowStateMachine::WallFollowOutput output;
+    RotateStateMachine::RotateOutput output;
     output.state = State::RUNNING;
     bool is_kidnapped = false;
     do {
@@ -182,7 +182,7 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleWallFollow> go
         if (goal_handle->is_canceling()) {
             m_is_running = false;
             state_machine->cancel();
-            auto result = std::make_shared<InternalWallFollowAction::Result>();
+            auto result = std::make_shared<InternalRotateAction::Result>();
             result->success = false;
             result->duration = this->now() - start_time;
             goal_handle->canceled(result);
@@ -194,7 +194,7 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleWallFollow> go
         if (is_kidnapped) {
             m_is_running = false;
             state_machine->cancel();
-            auto result = std::make_shared<InternalWallFollowAction::Result>();
+            auto result = std::make_shared<InternalRotateAction::Result>();
             result->success = false;
             result->duration = this->now() - start_time;
             goal_handle->abort(result);
@@ -206,7 +206,7 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleWallFollow> go
 		if (cont) {
             output = state_machine->execute(data);
             if (m_last_behavior != output.current_behavior) {
-                auto feedback = std::make_shared<InternalWallFollowAction::Feedback>();
+                auto feedback = std::make_shared<InternalRotateAction::Feedback>();
                 feedback->current_behavior = output.current_behavior;
                 goal_handle->publish_feedback(feedback);
                 m_last_behavior = output.current_behavior;
@@ -216,11 +216,11 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleWallFollow> go
         loop_rate.sleep();
     } while (output.state == State::RUNNING && rclcpp::ok());
 
-    RCLCPP_INFO(this->get_logger(), "Wall Follow action terminated");
+    RCLCPP_INFO(this->get_logger(), "Rotate action terminated");
 
     if (rclcpp::ok()) {
         m_is_running = false;
-        auto result = std::make_shared<InternalWallFollowAction::Result>();
+        auto result = std::make_shared<InternalRotateAction::Result>();
         result->success = (output.state == State::SUCCESS);
         result->duration = this->now() - start_time;
         if (result->success) {
@@ -231,7 +231,7 @@ void Create3CoverageNode::execute(const std::shared_ptr<GoalHandleWallFollow> go
     }
 }
 
-bool Create3CoverageNode::reflexes_setup()
+bool RotateNode::reflexes_setup()
 {
     bool robot_has_reflexes = true;
 
@@ -281,7 +281,7 @@ bool Create3CoverageNode::reflexes_setup()
     return robot_has_reflexes;
 }
 
-bool Create3CoverageNode::ready_to_start()
+bool RotateNode::ready_to_start()
 {
 
     if (m_hazards_subscription->get_publisher_count() == 0 ||
@@ -320,48 +320,51 @@ bool Create3CoverageNode::ready_to_start()
 	request->pose.position.x = 0;
 	request->pose.position.y = 0;
 	request->pose.position.z = 0;
-	auto result = m_reset_pos_client->async_send_request(request, std::bind(&Create3CoverageNode::reset_pose_callback, this, _1));
+	request->pose.orientation.x = 0;
+	request->pose.orientation.y = 0;
+	request->pose.orientation.z = 0;
+	auto result = m_reset_pos_client->async_send_request(request, std::bind(&RotateNode::reset_pose_callback, this, _1));
 	RCLCPP_INFO(this->get_logger(), "Sent request to reset pose!");
     return true;
 }
 
-void Create3CoverageNode::hazards_callback(HazardMsg::ConstSharedPtr msg)
+void RotateNode::hazards_callback(HazardMsg::ConstSharedPtr msg)
 {
     std::lock_guard<std::mutex> guard(m_mutex);
     m_last_hazards = *msg;
 }
 
-void Create3CoverageNode::ir_opcode_callback(OpCodeMsg::ConstSharedPtr msg)
+void RotateNode::ir_opcode_callback(OpCodeMsg::ConstSharedPtr msg)
 {
     std::lock_guard<std::mutex> guard(m_mutex);
     m_last_opcodes.push_back(*msg);
 }
 
-void Create3CoverageNode::kidnap_callback(KidnapMsg::ConstSharedPtr msg)
+void RotateNode::kidnap_callback(KidnapMsg::ConstSharedPtr msg)
 {
     std::lock_guard<std::mutex> guard(m_mutex);
     m_last_kidnap = *msg;
 }
 
-void Create3CoverageNode::odom_callback(OdometryMsg::ConstSharedPtr msg)
+void RotateNode::odom_callback(OdometryMsg::ConstSharedPtr msg)
 {
     std::lock_guard<std::mutex> guard(m_mutex);
     m_last_odom = *msg;
 }
 
-void Create3CoverageNode::ir_intensity_vector_callback(IrIntensityVectorMsg::ConstSharedPtr msg)
+void RotateNode::ir_intensity_vector_callback(IrIntensityVectorMsg::ConstSharedPtr msg)
 {
     std::lock_guard<std::mutex> guard(m_mutex);
     m_last_intensity_vector = *msg;
 }
 
-void Create3CoverageNode::interface_buttons_callback(InterfaceButtonsMsg::ConstSharedPtr msg)
+void RotateNode::interface_buttons_callback(InterfaceButtonsMsg::ConstSharedPtr msg)
 {
 	std::lock_guard<std::mutex> guard(m_mutex);
 	m_last_interface_buttons = *msg;
 }
 
-void Create3CoverageNode::reset_pose_callback(const rclcpp::Client<ResetPosSrv>::SharedFuture future) {
+void RotateNode::reset_pose_callback(const rclcpp::Client<ResetPosSrv>::SharedFuture future) {
 	std::lock_guard<std::mutex> guard(m_mutex);
 	m_pose_reset = true;
 }

@@ -1,13 +1,12 @@
 # Request
 
-# The robot will explore the environment for `explore_duration` time.
-# After that, it will try to dock as soon as it sees the docking station.
-# The `max_runtime` duration defines when the behavior should end regardless of whether
-# the dock has been found or not. 
+# The robot will rotate to the provided orientation
 
 builtin_interfaces/Duration max_runtime
-builtin_interfaces/Duration max_wall_follow_runtime
-int8 wall_follow_side
+# Rotate for relative angle (radians) from current robot position.  Angles greater than 2 PI will cause the robot to rotate in multiple circles
+float32 angle
+# Max rotation speed (positive rad/s), will cap negative angle to negative speed
+float32 max_rotation_speed 1.9
 builtin_interfaces/Duration print_duration
 ---
 # Result

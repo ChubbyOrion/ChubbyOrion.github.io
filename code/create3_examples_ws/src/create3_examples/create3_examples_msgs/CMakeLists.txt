@@ -17,7 +17,8 @@ find_package(action_msgs REQUIRED)
 find_package(builtin_interfaces REQUIRED)
 
 set(action_files
-    "action/Coverage.action"
+  "action/WallFollow.action"
+  "action/Rotate.action"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}

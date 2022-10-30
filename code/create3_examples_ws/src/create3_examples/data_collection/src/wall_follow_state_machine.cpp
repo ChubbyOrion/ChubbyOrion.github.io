@@ -4,13 +4,13 @@
 #include <math.h>
 #include <sstream>
 
-#include "create3_coverage/coverage_state_machine.hpp"
+#include "create3_coverage/wall_follow_state_machine.hpp"
 #include "tf2/utils.h"
 
 namespace create3_coverage {
 
-CoverageStateMachine::CoverageStateMachine(
-    create3_examples_msgs::action::Coverage::Goal goal,
+WallFollowStateMachine::WallFollowStateMachine(
+    create3_examples_msgs::action::WallFollow::Goal goal,
     rclcpp::Clock::SharedPtr clock,
     rclcpp::Logger logger,
     rclcpp_action::Client<WallFollowAction>::SharedPtr wall_follow_action_client,
@@ -32,12 +32,12 @@ CoverageStateMachine::CoverageStateMachine(
 	m_last_time_printed = m_clock->now();
 }
 
-CoverageStateMachine::~CoverageStateMachine()
+WallFollowStateMachine::~WallFollowStateMachine()
 {
     this->cancel();
 }
 
-CoverageStateMachine::CoverageOutput CoverageStateMachine::execute(const Behavior::Data& data)
+WallFollowStateMachine::WallFollowOutput WallFollowStateMachine::execute(const Behavior::Data& data)
 {
 	if (!m_current_behavior) {
         this->select_start_behavior(data);
@@ -56,7 +56,7 @@ CoverageStateMachine::CoverageOutput CoverageStateMachine::execute(const Behavio
     return m_coverage_output;
 }
 
-void CoverageStateMachine::cancel()
+void WallFollowStateMachine::cancel()
 {
     if (m_current_behavior) {
         m_current_behavior->cleanup();
@@ -64,7 +64,7 @@ void CoverageStateMachine::cancel()
     }
 }
 
-void CoverageStateMachine::select_start_behavior(const Behavior::Data& data)
+void WallFollowStateMachine::select_start_behavior(const Behavior::Data& data)
 {
 	if (m_goal.wall_follow_side == 1 || m_goal.wall_follow_side == -1) {
 		auto wall_follow_config = WallFollowBehavior::Config();
@@ -81,7 +81,7 @@ void CoverageStateMachine::select_start_behavior(const Behavior::Data& data)
 	}
 }
 
-void CoverageStateMachine::print_state(const Behavior::Data& data) {
+void WallFollowStateMachine::print_state(const Behavior::Data& data) {
 	auto readings = data.irIntensityVector.readings;
 	std::stringstream ss;
 
@@ -136,7 +136,7 @@ void CoverageStateMachine::print_state(const Behavior::Data& data) {
 	return;
 }
 
-void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
+void WallFollowStateMachine::select_next_behavior(const Behavior::Data& data)
 {
 	auto now = m_clock->now();
 	auto duration = now - m_last_time_printed;
@@ -163,55 +163,14 @@ void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
     {
         case FeedbackMsg::DRIVE_STRAIGHT:
         {
-            // If we just undocked, then we want to start with a spiral motion
-//            if (m_undocking) {
-//                m_undocking = false;
-//                this->goto_spiral(SpiralBehavior::Config());
-//                break;
-//            }
-
-            // If we were trying to get to spiral motion, do it only if drive straight succeeded (i.e. we moved enough from obstacle)
-			//            if (m_preparing_spiral && m_behavior_state == State::SUCCESS) {
-            //    m_preparing_spiral = false;
-            //    this->goto_spiral(SpiralBehavior::Config());
-            //    break;  
-            //}
-
-            // Usually after a DRIVE_STRAIGHT go to ROTATE
-            // If we failed previous drive straight, let's use a random angle 
             auto rotate_config = RotateBehavior::Config();
-            //if (m_behavior_state == State::FAILURE) {
-                
-                // Check if we failed too many times consecutively
-            //    if (m_evade_attempts.size() > 20) {
-			//       m_coverage_output.state = State::FAILURE;
-            //        break;
-            //    } 
-
-            //    constexpr double evade_resolution = 0.175433; // 10 degrees
-			rotate_config.target_rotation = compute_rotation(data.pose, 90);//compute_evade_rotation(data.pose, evade_resolution);
-			//            } else {
-            //    m_evade_attempts.clear();
-            //}
+			rotate_config.target_rotation = compute_rotation(data.pose, 90);
             rotate_config.robot_has_reflexes = m_has_reflexes;
             this->goto_rotate(rotate_config);
             break;
         }
         case FeedbackMsg::ROTATE:
         {
-            // A rotate failure indicates that we haven't been able to clear hazards
-			//            if (m_behavior_state == State::FAILURE) {
-			//                m_coverage_output.state = State::FAILURE;
-			//                break;
-			//            }            
-            // Check if it's time to go back spiraling, if it's the case we will do only a short DRIVE_STRAIGHT to
-            // move away from current obstacle (rather than driving forever until a new obstacle is hit).
-            // Alternatively we will go into DRIVE_STRAIGHT forever.
-			//            if (m_clock->now() - m_last_spiral_time >= rclcpp::Duration(std::chrono::seconds(60))) {
-			//                drive_config.max_distance = 0.25;
-			//                drive_config.min_distance = 0.25;
-			//                m_preparing_spiral = true;
-			//            }
 			auto drive_config = DriveStraightBehavior::Config();
 			drive_config.max_distance = 0.5;
 			drive_config.min_distance = 0.5;
@@ -251,7 +210,7 @@ void CoverageStateMachine::select_next_behavior(const Behavior::Data& data)
     }
 }
 
-double CoverageStateMachine::compute_rotation(const geometry_msgs::msg::Pose& pose, double angleDegrees)
+double WallFollowStateMachine::compute_rotation(const geometry_msgs::msg::Pose& pose, double angleDegrees)
 {
     tf2::Quaternion current_orientation;
     tf2::convert(pose.orientation, current_orientation);
@@ -265,7 +224,7 @@ double CoverageStateMachine::compute_rotation(const geometry_msgs::msg::Pose& po
     return relative_yaw_rotation;
 }
 
-double CoverageStateMachine::compute_evade_rotation(const geometry_msgs::msg::Pose& pose, double resolution)
+double WallFollowStateMachine::compute_evade_rotation(const geometry_msgs::msg::Pose& pose, double resolution)
 {
     tf2::Quaternion current_orientation;
     tf2::convert(pose.orientation, current_orientation);
@@ -311,31 +270,31 @@ double CoverageStateMachine::compute_evade_rotation(const geometry_msgs::msg::Po
     return relative_yaw_rotation;
 }
 
-void CoverageStateMachine::goto_wall_follow(const WallFollowBehavior::Config& config)
+void WallFollowStateMachine::goto_wall_follow(const WallFollowBehavior::Config& config)
 {
     m_current_behavior = std::make_unique<WallFollowBehavior>(config, m_wall_follow_action_client, m_logger); 
     m_coverage_output.state = State::RUNNING;
 }
 
-void CoverageStateMachine::goto_wait()
+void WallFollowStateMachine::goto_wait()
 {
 	m_current_behavior = std::make_unique<WaitBehavior>(m_logger);
 	m_coverage_output.state = State::RUNNING;
 }
 
-void CoverageStateMachine::goto_drive_straight(const DriveStraightBehavior::Config& config)
+void WallFollowStateMachine::goto_drive_straight(const DriveStraightBehavior::Config& config)
 {
     m_current_behavior = std::make_shared<DriveStraightBehavior>(config, m_cmd_vel_publisher, m_logger, m_clock);
     m_coverage_output.state = State::RUNNING;
 }
 
-void CoverageStateMachine::goto_rotate(const RotateBehavior::Config& config)
+void WallFollowStateMachine::goto_rotate(const RotateBehavior::Config& config)
 {
     m_current_behavior = std::make_shared<RotateBehavior>(config, m_cmd_vel_publisher, m_logger, m_clock);
     m_coverage_output.state = State::RUNNING;
 }
 
-void CoverageStateMachine::goto_spiral(const SpiralBehavior::Config& config)
+void WallFollowStateMachine::goto_spiral(const SpiralBehavior::Config& config)
 {
     m_last_spiral_time = m_clock->now();
     m_current_behavior = std::make_shared<SpiralBehavior>(config, m_cmd_vel_publisher, m_logger, m_clock);

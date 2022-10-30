@@ -4,7 +4,7 @@
 
 #include "create3_coverage/behaviors/behavior.hpp"
 #include "create3_coverage/behaviors/reflex-behavior.hpp"
-#include "create3_examples_msgs/action/coverage.hpp"
+#include "create3_examples_msgs/action/rotate.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "tf2_geometry_msgs/tf2_geometry_msgs.h"
@@ -35,7 +35,7 @@ public:
 
     State execute(const Data & data) override;
 
-    int32_t get_id() const override { return create3_examples_msgs::action::Coverage::Feedback::ROTATE; }
+    int32_t get_id() const override { return create3_examples_msgs::action::Rotate::Feedback::ROTATE; }
 
     double get_rotation_amount() { return m_rotation_amount; }
 

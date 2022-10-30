@@ -3,11 +3,11 @@
 <package format="3">
   <name>create3_examples_msgs</name>
   <version>0.0.1</version>
-  <description>Package containing action, message and service definitions used by the iRobot(R) Create(R) 3 examples</description>
-  <maintainer email="asoragna@irobot.com">Alberto Soragna</maintainer>
-  <maintainer email="jkearns@irobot.com">Justin Kearns</maintainer>
+  <description>Package containing action, message and service definitions used by the data collection workspace</description>
+  <maintainer email="dgriessler20@gmail.com">Daniel Griessler</maintainer>
   <license>BSD</license>
 
+  <author email="dgriessler2016@my.fit.edu">Daniel Griessler</author>
   <author email="asoragna@irobot.com">Alberto Soragna</author>
   <author email="jkearns@irobot.com">Justin Kearns</author>
 

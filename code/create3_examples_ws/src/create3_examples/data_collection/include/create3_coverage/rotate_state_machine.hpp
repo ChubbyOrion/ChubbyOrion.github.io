@@ -11,7 +11,7 @@
 #include "create3_coverage/behaviors/spiral-behavior.hpp"
 #include "create3_coverage/behaviors/undock-behavior.hpp"
 #include "create3_coverage/state.hpp"
-#include "create3_examples_msgs/action/coverage.hpp"
+#include "create3_examples_msgs/action/rotate.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "irobot_create_msgs/action/dock.hpp"
 #include "irobot_create_msgs/action/undock.hpp"
@@ -21,36 +21,36 @@
 
 namespace create3_coverage {
 
-class CoverageStateMachine
+class RotateStateMachine
 {
 public:
     using WallFollowAction = irobot_create_msgs::action::WallFollow;
     using TwistMsg = geometry_msgs::msg::Twist;
 
-    struct CoverageOutput
+    struct RotateOutput
     {
         int32_t current_behavior;
         State state;
     };
 
-    CoverageStateMachine(
-        create3_examples_msgs::action::Coverage::Goal goal,
+    RotateStateMachine(
+        create3_examples_msgs::action::Rotate::Goal goal,
         rclcpp::Clock::SharedPtr clock,
         rclcpp::Logger logger,
         rclcpp_action::Client<WallFollowAction>::SharedPtr wall_follow_action_client,
         rclcpp::Publisher<TwistMsg>::SharedPtr cmd_vel_publisher,
         bool has_reflexes);
 
-    ~CoverageStateMachine();
+    ~RotateStateMachine();
 
 	void print_state(const Behavior::Data& data);
 
-    CoverageOutput execute(const Behavior::Data& data);
+    RotateOutput execute(const Behavior::Data& data);
 
     void cancel();
 
 private:
-    using FeedbackMsg = create3_examples_msgs::action::Coverage::Feedback;
+    using FeedbackMsg = create3_examples_msgs::action::Rotate::Feedback;
 
     void select_start_behavior(const Behavior::Data& data);
 
@@ -77,8 +77,8 @@ private:
     bool m_preparing_spiral;
     std::vector<double> m_evade_attempts;
 
-    CoverageOutput m_coverage_output;
-    create3_examples_msgs::action::Coverage::Goal m_goal;
+    RotateOutput m_coverage_output;
+    create3_examples_msgs::action::Rotate::Goal m_goal;
     rclcpp::Time m_start_time;
     bool m_has_reflexes;
 
