@@ -34,66 +34,72 @@
     <p>Creating an implementation of a Bayesian network for recess detection using the sensor model of an iRobot Create 3. Then determine the robot's actual distance from the wall as well as when it is 10 cm past a door.</p>
     
     <h3>Baysian Network</h3>
-    <img src="https://github.com/ChubbyOrion/ChubbyOrion.github.io/blob/code/Model_50.png?raw=true" alt="Final trained network" width="1280" height="480">
+    <img src="Model_50.png?raw=true" alt="Final trained network" width="1280" height="480">
     <p>We used the python library Pomegranate to build and fit our Bayesian network from gathered data. 
         The data we gathered was of the robot heading toward the door with the wall on its left. 
         The network at school proved a challenge when connecting to the robot via ROS.
         We ended up having to take the robot home and improvise a door to use for training.
     </p>
+
+	<h3>Files</h3>
+	<ul>
+	  <li>
+		code/
+		<ul>
+		  <li>
+			bayesian.py - Used to create the bayesian network. See Dockerfile.
+		  </li>
+		  <li>
+			create3_coverage/ - This is a workspace for the original example code provided by the Create team that we adapted into our data-gathering code.
+		  </li>
+		  <li>
+            create3_examples_ws/ - This is a workspace for our data collection code adapted from the Create examples provided by the Create team.
+          </li>
+		  <li>
+            create3_ws/ - This is a workspace for the Create robot simulator. We used this a few times when developing the code
+          </li>
+		  <li>
+			Dockerfile - This is a Dockerfile to use when generating the bayesian network.
+		  </li>	
+          <li>
+            door_data/ - This is all of our collected data from the robot that we gathered during training.
+          </li>
+		  <li>
+			instructions.txt - Basic instructions used when generating the data.
+		  </li>
+		  <li>
+			python/ - Contains the source code for generating the distance from the wall as a probability distribution (dist_from_wall.py), the input santitation that distance from wall script uses (ir_intensity.sh) and the trained bayesian network and live_model.py used for live testing.
+          <li>
+            ros2_ws/ - This is a workspace that has the specialized irobot_create_msgs which are customized actions, topics, and messages that the robot uses to communicate in ROS.
+          </li>
+          <li>
+            ros_ign/ - This is a workspace that contains code for linking ROS to Gazebo. This is used by the simulator code.
+          </li>
+          <li>
+            workspace/ - This is a workspace containing Gazebo support code. This is used by the simulator code.
+          </li>
+		</ul>
+	  </li>
+	  <li>model_50n_5r.pxl - model data.</li>
+	  <li>Model_50.png - picture represenation of the model.</li>
+	  <li>README.md - overall readme</li>
+	  <li>style.css - style sheet for this page</li>
+	  <li>Tables.csv - final CPT tables</li>
+	</ul>	
     
     <h3>Links</h3>
     <ul>
         <li>
-            <a href="https://github.com/ChubbyOrion/ChubbyOrion.github.io/tree/code/code/create3_examples_ws/src/create3_examples/data_collection">Measurements</a>
+            <a href="code/create3_examples_ws/src/create3_examples/data_collection">Measurements</a>
             <br/>
             <p>
                 If you want to take measurements using the code you have to download all the workspaces and then source the setup files.
-                As well as have ROS2 downloaded.
-            </p>     
-            <p>
-                The folder structure is as follows: 
-                <ul>
-                    <li>
-                        create3_coverage
-                        <br/>
-                        <p>This is a workspace for the original example code provided by the Create team that we adapted into our data-gathering code.</p>
-                    </li>
-                    <li>
-                        create3_examples_ws
-                        <br/>
-                        <p>This is a workspace for our data collection code adapted from the Create examples provided by the Create team.</p>
-                    </li>
-                    <li>
-                        create3_workspace
-                        <br/>
-                        <p>This is a workspace for the Create robot simulator. We used this a few times when developing the code</p>
-                    </li>
-                    <li>
-                        door_data
-                        <br/>
-                        <p>This is all of our collected data from the robot that we gathered during training.</p>
-                    </li>
-                    <li>
-                        ros2_ws
-                        <br/>
-                        <p>This is a workspace that has the specialized irobot_create_msgs which are customized actions, topics, and messages that the robot uses to communicate in ROS.</p>
-                    </li>
-                    <li>
-                        ros_ign
-                        <br/>
-                        <p>This is a workspace that contains code for linking ROS to Gazebo. This is used by the simulator code.</p>
-                    </li>
-                    <li>
-                        workspace
-                        <br/>
-                        <p>This is a workspace containing Gazebo support code. This is used by the simulator code.</p>
-                    </li>
-            </ul>
+                As well as have ROS2 downloaded. Refer to the README in the "create3_examples_ws" folder.
             </p>
         </li>
-        <li><a href="https://github.com/ChubbyOrion/ChubbyOrion.github.io/blob/code/code/bayesian.py">CPTs of Bayesian Network</a></li>
-        <li><a href="https://github.com/ChubbyOrion/ChubbyOrion.github.io/blob/code/code/bayesian.py">Compute Sensor Fusion</a></li>
-        <li><a href="https://github.com/ChubbyOrion/ChubbyOrion.github.io/blob/code/code/python/dist_from_wall.py">Computing and Graphing actual distance from wall as a probability distribution</a></li>
+        <li><a href="code/bayesian.py">CPTs of Bayesian Network</a></li>
+        <li><a href="code/bayesian.py">Compute Sensor Fusion</a></li>
+        <li><a href="code/python/dist_from_wall.py">Computing and Graphing actual distance from wall as a probability distribution</a></li>
     </ul>
     <br/>
         <p>
