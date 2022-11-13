@@ -316,6 +316,10 @@ bool Create3CoverageNode::ready_to_start()
 			return false;
 		}
 
+	{
+		std::lock_guard<std::mutex> guard(m_mutex);
+		m_pose_reset = false;
+	}
 	auto request = std::make_shared<ResetPosSrv::Request>();
 	request->pose.position.x = 0;
 	request->pose.position.y = 0;
@@ -364,6 +368,7 @@ void Create3CoverageNode::interface_buttons_callback(InterfaceButtonsMsg::ConstS
 void Create3CoverageNode::reset_pose_callback(const rclcpp::Client<ResetPosSrv>::SharedFuture future) {
 	std::lock_guard<std::mutex> guard(m_mutex);
 	m_pose_reset = true;
+	RCLCPP_INFO(this->get_logger(), "Pose reset!");
 }
 
 } // namespace create3_coverage

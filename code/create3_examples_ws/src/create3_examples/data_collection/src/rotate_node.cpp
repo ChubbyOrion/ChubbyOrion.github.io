@@ -29,10 +29,6 @@ RotateNode::RotateNode()
         this->get_node_logging_interface(),
         this->get_node_waitables_interface(),
         "wall_follow");
-
-	m_reset_pos_client = this->create_client<ResetPosSrv>(
-														  "reset_pose"
-	);
     
     m_cmd_vel_publisher = this->create_publisher<TwistMsg>("cmd_vel", 10);
 
@@ -80,7 +76,6 @@ RotateNode::RotateNode()
     m_is_running = false;
     m_last_behavior = -1;
     m_last_opcodes_cleared_time = this->now();
-	m_pose_reset = false;
     RCLCPP_INFO(this->get_logger(), "Node created!");
 }
 
@@ -157,11 +152,9 @@ void RotateNode::execute(const std::shared_ptr<GoalHandleRotate> goal_handle)
     do {
 
         Behavior::Data data;
-		bool cont = true;
         {
             std::lock_guard<std::mutex> guard(m_mutex);
 
-			cont = m_pose_reset;
             data.hazards = m_last_hazards;
             data.pose = m_last_odom.pose.pose;
 			data.twist = m_last_odom.twist.twist;
@@ -203,14 +196,12 @@ void RotateNode::execute(const std::shared_ptr<GoalHandleRotate> goal_handle)
         }
 
         // Run the state machine!
-		if (cont) {
-            output = state_machine->execute(data);
-            if (m_last_behavior != output.current_behavior) {
-                auto feedback = std::make_shared<InternalRotateAction::Feedback>();
-                feedback->current_behavior = output.current_behavior;
-                goal_handle->publish_feedback(feedback);
-                m_last_behavior = output.current_behavior;
-            }
+		output = state_machine->execute(data);
+		if (m_last_behavior != output.current_behavior) {
+			auto feedback = std::make_shared<InternalRotateAction::Feedback>();
+			feedback->current_behavior = output.current_behavior;
+			goal_handle->publish_feedback(feedback);
+			m_last_behavior = output.current_behavior;
 		}
 
         loop_rate.sleep();
@@ -310,21 +301,6 @@ bool RotateNode::ready_to_start()
         return false;
     }
 
-	if (!m_reset_pos_client->wait_for_service(std::chrono::duration< int64_t,  std::milli >(1000)))
-		{
-			RCLCPP_WARN(this->get_logger(), "Some services are not yet ready yet");
-			return false;
-		}
-
-	auto request = std::make_shared<ResetPosSrv::Request>();
-	request->pose.position.x = 0;
-	request->pose.position.y = 0;
-	request->pose.position.z = 0;
-	request->pose.orientation.x = 0;
-	request->pose.orientation.y = 0;
-	request->pose.orientation.z = 0;
-	auto result = m_reset_pos_client->async_send_request(request, std::bind(&RotateNode::reset_pose_callback, this, _1));
-	RCLCPP_INFO(this->get_logger(), "Sent request to reset pose!");
     return true;
 }
 
@@ -362,11 +338,6 @@ void RotateNode::interface_buttons_callback(InterfaceButtonsMsg::ConstSharedPtr 
 {
 	std::lock_guard<std::mutex> guard(m_mutex);
 	m_last_interface_buttons = *msg;
-}
-
-void RotateNode::reset_pose_callback(const rclcpp::Client<ResetPosSrv>::SharedFuture future) {
-	std::lock_guard<std::mutex> guard(m_mutex);
-	m_pose_reset = true;
 }
 
 } // namespace create3_coverage

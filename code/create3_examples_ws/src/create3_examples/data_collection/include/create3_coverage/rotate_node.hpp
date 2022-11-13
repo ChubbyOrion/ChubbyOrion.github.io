@@ -18,7 +18,6 @@
 #include "irobot_create_msgs/msg/kidnap_status.hpp"
 #include "irobot_create_msgs/msg/ir_intensity_vector.hpp"
 #include "irobot_create_msgs/msg/interface_buttons.hpp"
-#include "irobot_create_msgs/srv/reset_pose.hpp"
 #include "nav_msgs/msg/odometry.hpp"
 #include "rclcpp/rclcpp.hpp"
 #include "rclcpp_action/rclcpp_action.hpp"
@@ -43,8 +42,6 @@ private:
     using TwistMsg = geometry_msgs::msg::Twist;
     using IrIntensityVectorMsg = irobot_create_msgs::msg::IrIntensityVector;
     using InterfaceButtonsMsg = irobot_create_msgs::msg::InterfaceButtons;
-
-	using ResetPosSrv = irobot_create_msgs::srv::ResetPose;
 
     bool reflexes_setup();
 
@@ -74,7 +71,6 @@ private:
     void ir_intensity_vector_callback(IrIntensityVectorMsg::ConstSharedPtr msg);
 
 	void interface_buttons_callback(InterfaceButtonsMsg::ConstSharedPtr msg);
-	void reset_pose_callback(const rclcpp::Client<ResetPosSrv>::SharedFuture future);
 
     int32_t m_last_behavior;
 
@@ -96,8 +92,6 @@ private:
 
     rclcpp_action::Client<WallFollowAction>::SharedPtr m_wall_follow_action_client;
 
-	rclcpp::Client<ResetPosSrv>::SharedPtr m_reset_pos_client;
-
     rclcpp::Publisher<TwistMsg>::SharedPtr m_cmd_vel_publisher;
 
     rclcpp::AsyncParametersClient::SharedPtr m_reflexes_param_client;
@@ -108,8 +102,6 @@ private:
     rclcpp::Subscription<OpCodeMsg>::SharedPtr m_ir_opcode_subscription;
     rclcpp::Subscription<IrIntensityVectorMsg>::SharedPtr m_ir_intensity_vector_subscription;
 	rclcpp::Subscription<InterfaceButtonsMsg>::SharedPtr m_interface_buttons_subscription;
-
-	bool m_pose_reset;
 };
 
 } // namespace create3_coverage

@@ -44,24 +44,27 @@ State RotateBehavior::execute(const Data & data)
         m_first_run = true;
         tf2::convert(data.pose.orientation, m_initial_orientation);
 
-        RCLCPP_DEBUG(m_logger, "Rotation initial yaw: %f", tf2::getYaw(m_initial_orientation));
+        RCLCPP_INFO(m_logger, "Rotation initial yaw: %f", tf2::getYaw(m_initial_orientation));
     }
 
-    tf2::Quaternion current_orientation;
-    tf2::convert(data.pose.orientation, current_orientation);
-    tf2::Quaternion relative_orientation = current_orientation * m_initial_orientation.inverse();
+	tf2::Quaternion current_orientation;
+	tf2::convert(data.pose.orientation, current_orientation);
+	current_orientation.normalize();
 
-    double relative_yaw = tf2::getYaw(relative_orientation);
-	RCLCPP_INFO(m_logger, "Relative yaw: %f. Target: %f", relative_yaw, m_config.target_rotation);
-    if (std::abs(relative_yaw) >= std::abs(m_config.target_rotation)) {
-        RCLCPP_INFO(m_logger, "Rotation completed: from %f to %f",
-            tf2::getYaw(m_initial_orientation), tf2::getYaw(current_orientation));
+	tf2::Quaternion q_r;
+	q_r = m_initial_orientation*current_orientation.inverse();
+
+	double rel_yaw = tf2::getYaw(q_r);
+	double target_yaw = m_config.target_rotation;
+	RCLCPP_INFO(m_logger, "Target: %f, Current yaw: %f", target_yaw, rel_yaw);
+    if (std::abs(rel_yaw) >= std::abs(target_yaw)) {
+        RCLCPP_INFO(m_logger, "Rotation completed from %f to %f",
+					tf2::getYaw(m_initial_orientation), target_yaw);
         return State::SUCCESS;
     }
 
 
-    RCLCPP_DEBUG(m_logger, "Rotating: current orientation %f progress %f/%f",
-        tf2::getYaw(current_orientation), relative_yaw, m_config.target_rotation);
+    RCLCPP_DEBUG(m_logger, "Rotating: progress %f/%f", rel_yaw, target_yaw);
 
     auto twist_msg = std::make_unique<TwistMsg>();
     twist_msg->angular.z = std::copysign(m_config.angular_vel, m_config.target_rotation);

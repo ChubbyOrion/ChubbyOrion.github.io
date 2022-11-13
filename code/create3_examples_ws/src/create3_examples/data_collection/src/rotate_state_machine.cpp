@@ -152,7 +152,7 @@ void RotateStateMachine::select_next_behavior(const Behavior::Data& data)
         }
         case FeedbackMsg::ROTATE:
         {
-			this->goto_wait();
+			m_coverage_output.state = State::SUCCESS;
             break;
         }
         case FeedbackMsg::SPIRAL:
