@@ -40,7 +40,7 @@ class stateHandler:
             time.sleep(1)
             self.rotate()
             time.sleep(3)
-            self.start(ros.LEFT, int(time.time() - self.time))
+            self.start(ros.RIGHT, int(time.time() - self.time))
 
     def toggle(self, val):
 
@@ -91,7 +91,7 @@ def main():
     positives = [0] * 15
     DOOR = stateHandler(callback=lambda: print("Callback"))
 
-    DOOR.start(ros.RIGHT)
+    DOOR.start(ros.LEFT)
     while True:
 
         line = proc.stdout.readline()
@@ -109,11 +109,8 @@ def main():
             predStates.append(bayes_predict)
             if len(predStates) >= nabstract:
 
-
                 temp = abstract_model.predict([predStates[-nabstract:] + [None]])[-1][-1]
                 predicted = numpy.char.equal(temp, "True")
-
-                print(positives)
 
                 if predicted:
                     positives.append(1)
