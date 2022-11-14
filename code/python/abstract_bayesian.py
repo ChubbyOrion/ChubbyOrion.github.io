@@ -12,7 +12,7 @@ test_data = ["14.csv", "15.csv", "16.csv"]
 
 def probTrue(model, state):
     nstate = len(state) - 1
-    return True if numpy.char.equal(model.predict([state[:nstate] + [None]])[-1][-1], "True") else False
+    return "Apple" if numpy.char.equal(model.predict([state[:nstate] + [None]])[-1][-1], "True") else "Orange"
 
 
 def state_slices(states, len_slice):
@@ -63,21 +63,21 @@ rng = .05
 def trial(nabstract, nstates, rng):
     model, model2 = build_model(nabstract, nstates, rng)
 
+    """
     testStates = [bayesian.statesFromFile(file, nstates, rng) for file
                   in train_data + test_data]
-
+    
     test_obs = state_slices([(probTrue(model, substate)) for state in testStates for substate in state], nabstract)
     test_act = state_slices([substate[nstates] for state in testStates for substate in state], nabstract)
 
     final_states_test = [obs + [act[-1]] for obs, act in zip(test_obs, test_act)]
-
+    
     fp = 0
     fn = 0
     tp = 0
     tn = 0
     for state in final_states_test:
         predicted = model2.predict([state[:nabstract] + [None]])[-1][-1]
-        prob = model2.predict_proba([state[:nabstract] + [None]])[-1][-1].parameters[0][True]
         actual = state[-1]
         if predicted and actual:
             tp += 1
@@ -97,10 +97,10 @@ def trial(nabstract, nstates, rng):
     except ZeroDivisionError as e:
         f1 = 0
     print(f"Pre: {precision} Rec: {recall} f1: {f1}")
-
-    with open("python/ModelBayes", 'wb') as fout:
+    """
+    with open("ModelBayes", 'wb') as fout:
         pickle.dump(model.to_dict(), fout)
-    with open("python/ModelAbs", 'wb') as fout:
+    with open("ModelAbs", 'wb') as fout:
         pickle.dump(model2.to_json(), fout)
 
 
@@ -114,7 +114,5 @@ def many_trials():
 
 
 
+
 trial(10, 60, .02)
-
-
-

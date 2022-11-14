@@ -1,9 +1,12 @@
 import subprocess
 import pickle
+import time
+
 import pomegranate
 import numpy
-import pomdp_py
-import pomDP
+
+
+
 import ros
 import signal
 
@@ -13,43 +16,42 @@ class stateHandler:
         self.val = False
         self.callback = callback
         self.proc = False
-        self.problem, self.planner = pomDP.main()
+        self.doors = 0
+        self.time = time.time()
 
-    def start(self):
-        self.proc = ros.wall_follow(3600, 0, 3600, 0, ros.RIGHT, 0, 10000000)
+    def start(self, direction, tm=3600):
+        self.proc = ros.wall_follow(tm, 0, tm, 0, direction, 0, 10000000)
 
     def stop(self):
         if self.proc:
             self.proc.send_signal(signal.SIGINT)
             self.proc = False
 
-
     def rotate(self):
-        ros.rotate(30,0,1.57,0,10000000)
+        ros.rotate(30, 0, 1.57, 0, 10000000)
 
     def wait(self):
         pass
-    def handle(self, door):
-        action = pomDP.run_planner(self.problem, self.planner, door)
-        if action == "start":
-            self.start()
-        elif action == "wait":
-            self.wait()
-        elif action == "stop":
+
+    def handle(self):
+        self.doors += 1
+        if self.doors == 3:
             self.stop()
-        else:
+            time.sleep(1)
             self.rotate()
-        return action
+            time.sleep(3)
+            self.start(ros.LEFT, int(time.time() - self.time))
 
+    def toggle(self, val):
 
-
-
-    def toggle(self):
         # val has gone from false to true
-        if self.val:
-            self.handle(self.val)
-
-        self.val = not self.val
+        if val and not self.val :
+            print("Setting true")
+            self.val = True
+            self.handle()
+        elif self.val and not val:
+            print("Setting False")
+            self.val = False
 
 
 def direction(val, rng):
@@ -62,47 +64,73 @@ def direction(val, rng):
 
 
 def main():
-    with open("model_50n_5r.pkl", 'rb') as inf:
+
+    with open("ModelBayes", 'rb') as inf:
         di = pickle.load(inf)
 
     bayes_model = pomegranate.BayesianNetwork.from_dict(di)
-    NSTATES = 50
+
+    with open("ModelAbs", 'rb') as inf:
+        di2 = pickle.load(inf)
+
+    print(di2)
+    abstract_model = pomegranate.BayesianNetwork.from_json(di2)
+
+    #bayes_model, abstract_model =  abstract_bayesian.build_model(10, 60, .02)
+    print(abstract_model)
+    NSTATES = 60
+    nabstract = 10
     # Understanding the regular expression is left as an exercise for the reader
     cmd = "ros2 run data_collection data_collection"
     proc = subprocess.Popen(
         rf""" {cmd}""",
-         stdout=subprocess.PIPE, shell=True, encoding='utf-8')
+        stdout=subprocess.PIPE, shell=True, encoding='utf-8')
 
     states = []
+    predStates = []
     positives = [0] * 15
     DOOR = stateHandler(callback=lambda: print("Callback"))
-    print(DOOR.handle(False))
+
+    DOOR.start(ros.RIGHT)
     while True:
+
         line = proc.stdout.readline()
         if not line: break
         line = line.split(",")
         try:
             z = line[64]
-            ts = line[0].split()[1]
         except IndexError as e:
             continue
-        states.append(direction(float(z), .05))
+        states.append(direction(float(z), .02))
         if len(states) == NSTATES:
-            predicted = numpy.char.equal(bayes_model.predict([states[:NSTATES] + [None]])[-1][-1], "True")
+            bayes_predict = "Apple" if numpy.char.equal(bayes_model.predict([states[:NSTATES] + [None]])[-1][-1],
+                                                     "True") else "Orange"
 
-            # dumb way of doing this
-            if predicted:
-                positives.append(1)
-                # If we have had a lot of positives recently
-            else:
-                positives.append(0)
-            if sum(positives) / len(positives) > .7:
-                DOOR.toggle()
-            if sum(positives) / len(positives) < .3:
-                DOOR.toggle()
+            predStates.append(bayes_predict)
+            if len(predStates) >= nabstract:
 
-            positives.pop(0)
+
+                temp = abstract_model.predict([predStates[-nabstract:] + [None]])[-1][-1]
+                predicted = numpy.char.equal(temp, "True")
+
+                print(positives)
+
+                if predicted:
+                    positives.append(1)
+                    # If we have had a lot of positives recently
+                else:
+                    positives.append(0)
+
+
+                if sum(positives) / 15 > .7:
+                    DOOR.toggle(True)
+                elif sum(positives) / 15 < .3:
+                    DOOR.toggle(False)
+
+                positives.pop(0)
             states.pop(0)
+
+    exit()
 
 
 if __name__ == "__main__":
