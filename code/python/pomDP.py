@@ -61,7 +61,7 @@ class ObservationModel(pomdp_py.ObservationModel):
         pass
     def probability(self, observation, next_state, action):
         if action.name == "start":
-            if next_state.name == "t1" or next_state,name =="t4":
+            if next_state.name == "t1" or next_state.name =="t4":
                 if observation.name == "door:)":
                     return 0.0
                 else:
@@ -302,24 +302,18 @@ class PolicyModel(pomdp_py.RolloutPolicy):
 class RewardModel(pomdp_py.RewardModel):
     def sample(self, state, action, next_state):
         if next_state.name == "d1":
-            door_passed()
             return 1.0
         elif next_state.name == "d2":
-            door_passed()
             return 1.0
         elif next_state.name == "d3":
-            door_passed()
             return 1.0
         elif next_state.name == "rotate" and state.name is not "rotate":
             return 1.0
         elif next_state.name == "d4":
-            door_passed()
             return 1.0
         elif next_state.name == "d5":
-            door_passed()
             return 1.0
         elif next_state.name == "d6":
-            door_passed()
             return 1.0
         elif next_state.name == "terminate":
             return 8.0
