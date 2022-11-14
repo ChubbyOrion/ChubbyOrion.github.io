@@ -307,7 +307,7 @@ class RewardModel(pomdp_py.RewardModel):
             return 1.0
         elif next_state.name == "d3":
             return 1.0
-        elif next_state.name == "rotate" and state.name is not "rotate":
+        elif next_state.name == "rotate" and state.name != "rotate":
             return 1.0
         elif next_state.name == "d4":
             return 1.0
