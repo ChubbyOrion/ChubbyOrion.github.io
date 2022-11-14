@@ -393,6 +393,8 @@ def run_planner(problem, planner, door, debug_tree=False):
             problem.agent.transition_model)
         problem.agent.set_belief(new_belief)
 
+    return action.name
+
 def main():
     problem = ProjectTwo.create()
 

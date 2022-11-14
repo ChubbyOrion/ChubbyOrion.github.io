@@ -5,24 +5,46 @@ import numpy
 import pomdp_py
 import pomDP
 import ros
+import signal
 
 
 class stateHandler:
     def __init__(self, callback):
         self.val = False
         self.callback = callback
+        self.problem, self.planner = pomDP.main()
+
+    def start(self):
+        self.proc = ros.wall_follow(3600, 0, 3600, 0, ros.RIGHT, 0, 10000000)
+
+    def stop(self):
+        self.proc.send_signal(signal.SIGINT)
+
+    def rotate(self):
+        ros.rotate(30,0,1.57,0,10000000)
+
+    def wait(self):
+        pass
+    def handle(self, door):
+        action = pomDP.run_planner(self.problem, self.planner, door)
+        if action == "start":
+            self.start()
+        elif action == "wait":
+            self.wait()
+        elif action == "stop":
+            self.stop()
+        else:
+            self.rotate()
+
 
 
 
     def toggle(self):
-        #val has gone from false to true
+        # val has gone from false to true
         if self.val:
-            self.callback()
+            self.handle(self.val)
+
         self.val = not self.val
-
-
-
-def callback():
 
 
 def direction(val, rng):
@@ -48,7 +70,8 @@ def main():
 
     states = []
     positives = [0] * 15
-    DOOR = stateHandler(callback=lambda : print("Callback"))
+    DOOR = stateHandler(callback=lambda: print("Callback"))
+
     while True:
         line = proc.stderr.readline()
         if not line: break
