@@ -53,12 +53,14 @@ Terminate -> Stop -> Not Door
 
 The expected behavior was for the probability to be highest in the state the robot is in, and that each new state would in turn have the current highest probability.
 This would create a wave effect in the probability graph. It would start out looking like this:   
+```
 - - -
      \
       \
        \
         \
           - - -
+```
 Then this "wave" would continually move forward.
 
 What we found instead was like this: ~~~~~~~
