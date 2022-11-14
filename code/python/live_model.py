@@ -36,6 +36,7 @@ class stateHandler:
     def handle(self):
         self.doors += 1
         if self.doors == 3:
+            print("Third Door")
             self.stop()
             time.sleep(1)
             self.rotate()
@@ -81,16 +82,15 @@ def main():
     with open("ModelAbs", 'rb') as inf:
         di2 = pickle.load(inf)
 
-    print(di2)
     abstract_model = pomegranate.BayesianNetwork.from_json(di2)
 
     #bayes_model, abstract_model =  abstract_bayesian.build_model(10, 60, .02)
-    print(abstract_model)
+
     NSTATES = 60
     nabstract = 10
     # Understanding the regular expression is left as an exercise for the reader
     cmd = "ros2 run data_collection data_collection"
-    cmd = "cat ../door_data/data_left_16.txt"
+    cmd = "cat ../door_data/data_left_14.txt ../door_data/data_left_16.txt"
 
 
     proc = subprocess.Popen(
@@ -108,7 +108,6 @@ def main():
         line = proc.stdout.readline()
         if not line: break
         line = line.split(",")
-        print(line)
         try:
             z = line[64]
         except IndexError as e:
