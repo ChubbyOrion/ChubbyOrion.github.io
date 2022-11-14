@@ -54,13 +54,21 @@ class stateHandler:
             self.val = False
 
 
-def direction(val, rng):
-    if -rng < val < rng:
+def direction(val, rng, diff = 5):
+    abr = abs(rng)
+    abv = abs(val)
+
+    if abv < abr:
         return "S"
-    elif val > rng:
-        return "R"
-    else:
-        return "L"
+
+    direction = "L" if val < 0 else "R"
+
+    very = 0
+    for i in range(1, diff):
+        if abv < i * abr:
+            very += 1
+
+    return f"{'V' * very}{direction}"
 
 
 def main():

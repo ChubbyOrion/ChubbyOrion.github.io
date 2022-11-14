@@ -63,7 +63,7 @@ rng = .05
 def trial(nabstract, nstates, rng):
     model, model2 = build_model(nabstract, nstates, rng)
 
-    """
+
     testStates = [bayesian.statesFromFile(file, nstates, rng) for file
                   in train_data + test_data]
     
@@ -97,7 +97,10 @@ def trial(nabstract, nstates, rng):
     except ZeroDivisionError as e:
         f1 = 0
     print(f"Pre: {precision} Rec: {recall} f1: {f1}")
-    """
+
+
+
+    return 1
     with open("ModelBayes", 'wb') as fout:
         pickle.dump(model.to_dict(), fout)
     with open("ModelAbs", 'wb') as fout:
@@ -105,14 +108,11 @@ def trial(nabstract, nstates, rng):
 
 
 def many_trials():
-    for nabstract in [5]:
+    for nabstract in [10, 20]:
         for nstates in range(55, 70, 5):
-            for rng in [2]:
+            for rng in range(2, 8, 2):
                 print(nabstract, nstates, rng, end=" ")
                 trial(nabstract, nstates, rng / 100)
 
 
-
-
-
-trial(10, 60, .02)
+many_trials()
