@@ -66,14 +66,14 @@ def main():
     cmd = "ros2 run data_collection data_collection"
     proc = subprocess.Popen(
         rf""" {cmd}""",
-        stderr=subprocess.PIPE, stdout=subprocess.DEVNULL, shell=True, encoding='utf-8')
+         stdout=subprocess.PIPE, shell=True, encoding='utf-8')
 
     states = []
     positives = [0] * 15
     DOOR = stateHandler(callback=lambda: print("Callback"))
 
     while True:
-        line = proc.stderr.readline()
+        line = proc.stdout.readline()
         if not line: break
         line = line.split(",")
         try:
