@@ -334,7 +334,7 @@ class ProjectTwo(pomdp_py.POMDP):
         super().__init__(agent, env, name="Project 2")
     
     @staticmethod
-    def create();
+    def create():
         init_true_state = State("initial")
         init_belief = pomdp_py.Histogram({
             State("initial"): 1.0,
