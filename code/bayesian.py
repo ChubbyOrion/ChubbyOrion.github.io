@@ -5,17 +5,50 @@ import pandas
 import pandas as pd
 from pomegranate import *
 import pickle
-
+import math
 
 # Constant values
 
-def direction(val, rng):
+
+
+
+def direction(val, rng, diff = 5):
+    abr = abs(rng)
+    abv = abs(val)
+
+    if abv < abr:
+        return "S"
+
+    direction = "L" if val < 0 else "R"
+
+    very = 0
+    for i in range(1, diff):
+        if abv < i * abr:
+            very += 1
+
+    return f"{'V' * very}{direction}"
+
+
+
+def dirold(val, rng):
     if -rng < val < rng:
         return "S"
     elif val > rng:
-        return "R"
+        if val > 2 * rng:
+            if val > 3 * rng:
+                return "VVR"
+            else:
+                return "VR"
+        else:
+            return "R"
     else:
-        return "L"
+        if val < 2 * (0 - rng):
+            if val < 3 * (0 - rng):
+                return "VVL"
+            else:
+                return "VL"
+        else:
+            return "L"
 
 
 def statesFromFile(iinf, n_states, rng=.05):
@@ -93,17 +126,20 @@ def trials(nstate, rng):
     f1 = 2 * precision * recall / (precision + recall)
     print(f"Pre: {precision} Rec: {recall} f1: {f1}")
     return precision, recall, f1
-#Run many trials of different n_states and random numbers generated
+
+
+# Run many trials of different n_states and random numbers generated
 def run_trials():
-    for i in range(25, 70, 5):
-        for j in range(5, 20, 5):
+    for i in range(45, 65, 5):
+        for j in range(1, 6, 1):
             print(i, j, end=" ")
             trials(i, j / 100)
 
-#Prints the model and writes out the generated tables
+
+# Prints the model and writes out the generated tables
 def show_model():
     model = belief(
-        [statesFromFile(file, 50,.05) for file
+        [statesFromFile(file, 50, .05) for file
          in ["9.csv", "10.csv", "11.csv", "12.csv", "13.csv"]],
         50)
     df = pandas.DataFrame()
@@ -122,9 +158,9 @@ def show_model():
     print(df)
 
     df.to_csv("Tables.csv")
-    with open ("model.pkl", 'wb') as outf:
-        pickle.dump( model, outf)
+    with open("model.pkl", 'wb') as outf:
+        pickle.dump(x, outf)
 
 
-show_model()
-
+if __name__ == "__main__":
+    run_trials()
