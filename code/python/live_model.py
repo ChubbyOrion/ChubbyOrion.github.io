@@ -90,6 +90,9 @@ def main():
     nabstract = 10
     # Understanding the regular expression is left as an exercise for the reader
     cmd = "ros2 run data_collection data_collection"
+    cmd = "cat ../door_data/data_left_16.txt"
+
+
     proc = subprocess.Popen(
         rf""" {cmd}""",
         stdout=subprocess.PIPE, shell=True, encoding='utf-8')
@@ -105,6 +108,7 @@ def main():
         line = proc.stdout.readline()
         if not line: break
         line = line.split(",")
+        print(line)
         try:
             z = line[64]
         except IndexError as e:

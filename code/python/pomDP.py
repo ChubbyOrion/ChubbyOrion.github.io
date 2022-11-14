@@ -3,6 +3,7 @@ from pomdp_py.utils import TreeDebugger
 import random
 import numpy as np
 import sys
+import time
 
 states = ['initial', 't1', 'd1', 't2', 'd2', 't3', 'd3', 'tr', 'rotate', 't4', 'd4', 't5', 'd5', 't6', 'd6', 't7', 'terminate']
 actions = ['start', 'stop', 'rotate', 'wait']
@@ -60,6 +61,7 @@ class ObservationModel(pomdp_py.ObservationModel):
     def __init__(self):
         pass
     def probability(self, observation, next_state, action):
+        #print("Observation Probability: {}, {}, {}".format(observation, next_state, action))
         if action.name == "start":
             if next_state.name == "t1" or next_state.name =="t4":
                 if observation.name == "door:)":
@@ -94,25 +96,27 @@ class ObservationModel(pomdp_py.ObservationModel):
                 else:
                     return 1.0
         else:
-            if action.name.startswith('t'):
+            if next_state.name.startswith('t') and len(next_state.name) == 2:
                 if observation.name == "door:)":
-                    return 0.0
+                    return 0.1
                 else:
-                    return 1.0
-            elif action.name.startswith('d'):
+                    return 0.9
+            elif next_state.name.startswith('d'):
                 if observation.name == "door:)":
-                    return 1.0
+                    return 0.9
                 else:
-                    return 0.0
+                    return 0.1
             else:
                 if observation.name == "door:)":
-                    return 0.0
+                    return 0.1
                 else:
-                    return 1.0
+                    return 0.9
     def sample(self, next_state, action):
         if next_state.name.startswith('d'):
+            #print("Sample Observation door")
             return Observation("door:)")
         else:
+            #print("Same Observation NOT door")
             return Observation("notdoor")
     def get_all_observations(self):
         return [Observation(s)
@@ -120,6 +124,7 @@ class ObservationModel(pomdp_py.ObservationModel):
 
 class TransitionModel(pomdp_py.TransitionModel):
     def probability(self, next_state, state, action):
+        #print("Transition: {}, {}, {}".format(next_state, state, action))
         if action.name == "start":
             if state.name == "initial":
                 if next_state.name == "t1":
@@ -132,7 +137,7 @@ class TransitionModel(pomdp_py.TransitionModel):
                 else:
                     return 0.0
             else:
-                return 1.0
+                return 0.0
         elif action.name == "stop":
             if state.name == "tr":
                 if next_state.name == "rotate":
@@ -145,7 +150,7 @@ class TransitionModel(pomdp_py.TransitionModel):
                 else:
                     return 0.0
             else:
-                return 1.0
+                return 0.0
         elif action.name == "rotate":
             if state.name == "rotate":
                 if next_state.name == "rotate":
@@ -153,39 +158,58 @@ class TransitionModel(pomdp_py.TransitionModel):
                 else:
                     return 0.0
             else:
-                return 1.0
+                return 0.0
         else:
-            if state.name == "t1" and (next_state.name == "d1" or next_state.name == "t1"):
-                return 0.5
-            elif state.name == "t2" and (next_state.name == "d2" or next_state.name == "t2"):
-                return 0.5
-            elif state.name == "t3" and (next_state.name == "d3" or next_state.name == "t3"):
-                return 0.5
-            elif state.name == "t4" and (next_state.name == "d4" or next_state.name == "t4"):
-                return 0.5
-            elif state.name == "t5" and (next_state.name == "d5" or next_state.name == "t5"):
-                return 0.5
-            elif state.name == "t6" and (next_state.name == "d6" or next_state.name == "t6"):
-                return 0.5
-            elif state.name == "d1" and (next_state.name == "t2" or next_state.name == "d1"):
-                return 0.5
-            elif state.name == "d2" and (next_state.name == "t3" or next_state.name == "d2"):
-                return 0.5
-            elif state.name == "d3" and (next_state.name == "tr" or next_state.name == "d3"):
-                return 0.5
-            elif state.name == "d4" and (next_state.name == "t5" or next_state.name == "d4"):
-                return 0.5
-            elif state.name == "d5" and (next_state.name == "t6" or next_state.name == "d5"):
-                return 0.5
-            elif state.name == "d6" and (next_state.name == "t7" or next_state.name == "d6"):
-                return 0.5
-            elif state.name == "tr" and (next_state.name == "rotate" or next_state.name == "tr"):
-                return 0.5
-            elif state.name == "t7" and (next_state.name == "terminate" or next_state.name == "t7"):
-                return 0.5
+            if len(state.name) == 2 and state.name[0] == 't':
+                if next_state.name == state.name:
+                    # prob of still transitioning
+                    return 0.9
+                elif len(next_state.name) == 2 and next_state.name[0] == 'd' and next_state.name[1] == state.name[1]:
+                    # prob of advancing from transitioning to door
+                    return 0.1
+                else:
+                    return 0.0
+            elif len(state.name) == 2 and state.name[0] == 'd':
+                if next_state.name == state.name:
+                    # prob of still being in front of a door
+                    return 0.0
+                elif len(next_state.name) == 2 and next_state.name[0] == 't':
+                    if next_state.name == 'tr':
+                        if state.name == 'd3':
+                            # prob of going from d3 to tr
+                            return 1.0
+                        else:
+                            # prob of waiting from anything other than d3 to tr
+                            return 0.0
+                    elif next_state.name[1] == str(int(state.name[1]) + 1):
+                        # prob of advancing from door to transitioning
+                        return 1.0
+                    else:
+                        return 0.0
+                else:
+                    return 0.0
+            elif state.name == "tr":
+                if next_state.name == "rotate":
+                    # prob of going from tr to rotate
+                    return 0.1
+                elif next_state.name == "tr":
+                    # prob of staying in tr when in tr
+                    return 0.9
+                else:
+                    return 0.0
+            elif state.name == "t7":
+                if next_state.name == 'terminate':
+                    # prob of going from t7 to terminate
+                    return 0.1
+                elif next_state.name == 't7':
+                    # prob of staying in t7
+                    return 0.9
+                else:
+                    return 0.0
             else:
                 return 0.0
     def sample(self, state, action):
+        #print("Sample Transition: {}, {}".format(state, action))
         if action.name == "start":
             if state.name == "initial":
                 return State("t1")
@@ -285,6 +309,7 @@ class TransitionModel(pomdp_py.TransitionModel):
 class PolicyModel(pomdp_py.RolloutPolicy):
     ACTIONS = {Action(s) for s in actions}
     def sample(self, state):
+        #print("Policy sample: {}".format(state))
         if state.name == "initial":
             return Action("start")
         elif state.name == "tr" or state.name == "t7":
@@ -294,33 +319,54 @@ class PolicyModel(pomdp_py.RolloutPolicy):
         else:
             return Action("wait")
     def rollout(self, state, *args):
+        #print("Rollout Policy {}".format(state))
         return self.sample(state)
 
     def get_all_actions(self, state=None, history=None):
+        #print("Get all actions Policy")
         return PolicyModel.ACTIONS
 
 class RewardModel(pomdp_py.RewardModel):
     def sample(self, state, action, next_state):
-        if next_state.name == "d1":
+        #print("Reward sample: {}, {}, {}".format(state, action, next_state))
+        if state.name == 't1' and next_state.name == "d1" and action.name == 'wait':
             return 1.0
-        elif next_state.name == "d2":
+        elif state.name == 't2' and next_state.name == "d2" and action.name == 'wait':
             return 1.0
-        elif next_state.name == "d3":
+        elif state.name == 't3' and next_state.name == "d3" and action.name == 'wait':
             return 1.0
-        elif next_state.name == "rotate" and state.name != "rotate":
+        elif state.name == 't4' and next_state.name == "d4" and action.name == 'wait':
             return 1.0
-        elif next_state.name == "d4":
+        elif state.name == 't5' and next_state.name == "d5" and action.name == 'wait':
             return 1.0
-        elif next_state.name == "d5":
+        elif state.name == 't6' and next_state.name == "d6" and action.name == 'wait':
             return 1.0
-        elif next_state.name == "d6":
+        elif state.name == 'd1' and next_state.name == 't2' and action.name == 'wait':
             return 1.0
-        elif next_state.name == "terminate":
+        elif state.name == 'd2' and next_state.name == 't3' and action.name == 'wait':
+            return 1.0
+        elif state.name == 'd3' and next_state.name == 'tr' and action.name == 'wait':
+            return 1.0
+        elif state.name == 'd4' and next_state.name == 't5' and action.name == 'wait':
+            return 1.0
+        elif state.name == 'd5' and next_state.name == 't6' and action.name == 'wait':
+            return 1.0
+        elif state.name == 'd6' and next_state.name == 't7' and action.name == 'wait':
+            return 1.0
+        elif next_state.name == "terminate" and state.name == "t7" and action.name == 'stop':
             return 8.0
-        elif action.name == "start" or action.name == "stop" or action.name == "rotate":
+        elif state.name == 'rotate' and next_state.name == 't4' and action.name == 'start':
+            return 1.0
+        elif state.name == 'initial' and next_state.name == 't1' and action.name == 'start':
+            return 1.0
+        elif state.name == 't7' and next_state.name == 'terminate' and action.name == 'stop':
+            return 1.0
+        elif state.name == 'tr' and next_state.name == 'rotate' and action.name == 'stop':
+            return 1.0
+        elif state.name == 'rotate' and next_state.name == 'rotate' and action.name == 'rotate':
             return 0.0
         else:
-            return -1.0
+            return 0.0
 
 class ProjectTwo(pomdp_py.POMDP):
     def __init__(self, init_true_state, init_belief):
@@ -362,6 +408,8 @@ class ProjectTwo(pomdp_py.POMDP):
 
 
 def run_planner(problem, planner, door, debug_tree=False):
+    start_time = time.time()
+    
     action = planner.plan(problem.agent)
     if debug_tree:
         from pomdp_py.utils import TreeDebugger
@@ -393,6 +441,7 @@ def run_planner(problem, planner, door, debug_tree=False):
             problem.agent.transition_model)
         problem.agent.set_belief(new_belief)
 
+    print("--- %s seconds ---" % (time.time() - start_time))
     return action.name
 
 def main():
@@ -402,4 +451,50 @@ def main():
     return problem, vi
 
 if __name__ == '__main__':
-    main()
+    problem, vi = main()
+    
+    for i in range(0, 2):
+        action = run_planner(problem, vi, False)
+        print("Action {}: {}".format(i, action))
+        
+    action = run_planner(problem, vi, True)
+    print("Action: {}".format(action))
+    
+    for i in range(0, 2):
+        action = run_planner(problem, vi, False)
+        print("Action {}: {}".format(i, action))
+        
+    action = run_planner(problem, vi, True)
+    print("Action: {}".format(action))
+    
+    for i in range(0, 2):
+        action = run_planner(problem, vi, False)
+        print("Action {}: {}".format(i, action))
+        
+    action = run_planner(problem, vi, True)
+    print("Action: {}".format(action))
+    
+    for i in range(0, 3):
+        action = run_planner(problem, vi, False)
+        print("Action {}: {}".format(i, action))
+
+    action = run_planner(problem, vi, True)
+    print("Action: {}".format(action))
+
+    for i in range(0, 2):
+        action = run_planner(problem, vi, False)
+        print("Action {}: {}".format(i, action))
+
+    action = run_planner(problem, vi, True)
+    print("Action: {}".format(action))
+
+    for i in range(0, 2):
+        action = run_planner(problem, vi, False)
+        print("Action {}: {}".format(i, action))
+
+    action = run_planner(problem, vi, True)
+    print("Action: {}".format(action))
+
+    for i in range(0, 3):
+        action = run_planner(problem, vi, False)
+        print("Action {}: {}".format(i, action))

@@ -1,0 +1,154 @@
+True state: initial
+Belief: {State(initial): 1.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: start
+Reward: 1.0
+>> Observation: notdoor
+--- 12.72406530380249 seconds ---
+Action 0: start
+True state: t1
+Belief: {State(initial): 0.0, State(t1): 1.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 12.925177335739136 seconds ---
+Action 1: wait
+True state: t1
+Belief: {State(initial): 0.0, State(t1): 0.9878048780487805, State(d1): 0.012195121951219514, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: door:)
+--- 13.14288067817688 seconds ---
+Action: wait
+True state: t1
+Belief: {State(initial): 0.0, State(t1): 0.49659400544959126, State(d1): 0.49659400544959126, State(t2): 0.0068119891008174395, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 1.0
+>> Observation: notdoor
+--- 13.212634563446045 seconds ---
+Action 0: wait
+True state: d1
+Belief: {State(initial): 0.0, State(t1): 0.4678704994929006, State(d1): 0.005776179006085193, State(t2): 0.5262740872210953, State(d2): 7.923427991886411e-05, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 13.259732007980347 seconds ---
+Action 1: wait
+True state: d1
+Belief: {State(initial): 0.0, State(t1): 0.4619008962654448, State(d1): 0.00570248020080796, State(t2): 0.525895396296734, State(d2): 0.0064143124343793234, State(t3): 8.691480263386619e-05, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 1.0
+>> Observation: door:)
+--- 13.39593505859375 seconds ---
+Action: wait
+True state: t2
+Belief: {State(initial): 0.0, State(t1): 0.23220090601176566, State(d1): 0.2322009060117656, State(t2): 0.2675565995197299, State(d2): 0.26437140190639974, State(t3): 0.0036264938533113827, State(d3): 4.369269702784799e-05, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 1.0
+>> Observation: notdoor
+--- 13.381365299224854 seconds ---
+Action 0: wait
+True state: d2
+Belief: {State(initial): 0.0, State(t1): 0.21875971407772185, State(d1): 0.002700737210836072, State(t2): 0.49513515531994634, State(d2): 0.00311196057215679, State(t3): 0.2801587784933744, State(d3): 4.217988233865922e-05, State(tr): 4.573722181300398e-05, State(rotate): 0.0, State(t4): 4.573722181300398e-05, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 13.393962144851685 seconds ---
+Action 1: wait
+True state: d2
+Belief: {State(initial): 0.0, State(t1): 0.21595867810329294, State(d1): 0.00266615651979374, State(t2): 0.4917577580952896, State(d2): 0.0060345106415084625, State(t3): 0.279985039191874, State(d3): 0.003414463933666424, State(tr): 9.141804373939562e-05, State(rotate): 0.0, State(t4): 9.141804373939562e-05, State(d4): 5.574270959719245e-07, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 1.0
+>> Observation: door:)
+--- 13.379237651824951 seconds ---
+Action: wait
+True state: t3
+Belief: {State(initial): 0.0, State(t1): 0.10836224082972261, State(d1): 0.10836224082972261, State(t2): 0.24823723207906262, State(d2): 0.24675078158757124, State(t3): 0.14385333631648523, State(d3): 0.14048894219994093, State(tr): 0.0019495221342905435, State(rotate): 0.0, State(t4): 0.0019495221342905435, State(d4): 4.587110904213047e-05, State(t5): 3.1077987155914947e-07, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 13.489050149917603 seconds ---
+Action 0: wait
+True state: t3
+Belief: {State(initial): 0.0, State(t1): 0.08901315652527811, State(d1): 0.0010989278583367667, State(t2): 0.3028156765194645, State(d2): 0.002517434188508093, State(t3): 0.3433793632641677, State(d3): 0.0014588516957791894, State(tr): 0.12982734691188105, State(rotate): 0.0, State(t4): 0.12982734691188105, State(d4): 1.9770578454376117e-05, State(t5): 4.2122394554875975e-05, State(d5): 3.1516943176113705e-09, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: stop
+Reward: 0.0
+>> Observation: notdoor
+--- 13.58899188041687 seconds ---
+Action 1: stop
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 1.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: start
+Reward: 0.0
+>> Observation: notdoor
+--- 13.667977571487427 seconds ---
+Action 2: start
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 1.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: door:)
+--- 13.514029026031494 seconds ---
+Action: wait
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.5, State(d4): 0.5, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 13.513230800628662 seconds ---
+Action 0: wait
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.47093023255813954, State(d4): 0.005813953488372094, State(t5): 0.5232558139534883, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 13.565531015396118 seconds ---
+Action 1: wait
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.4649234693877551, State(d4): 0.005739795918367348, State(t5): 0.5229591836734693, State(d5): 0.0063775510204081625, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: door:)
+--- 13.532108306884766 seconds ---
+Action: wait
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.23372043317184382, State(d4): 0.23372043317184385, State(t5): 0.2661014534055286, State(d5): 0.26289541179823306, State(t6): 0.0035622684525505838, State(d6): 0.0, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 13.46285343170166 seconds ---
+Action 0: wait
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.22020135640863303, State(d4): 0.002718535264304112, State(t5): 0.4953775370509714, State(d5): 0.0030951773242419924, State(t6): 0.27856595918177923, State(d6): 4.143477007017393e-05, State(t7): 0.0, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 13.527469158172607 seconds ---
+Action 1: wait
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.21739179245444246, State(d4): 0.002683849289561018, State(t5): 0.49203903641951996, State(d5): 0.006037740514238778, State(t6): 0.27840692371212133, State(d6): 0.0033952063867331876, State(t7): 4.5451223383309086e-05, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: door:)
+--- 13.50687551498413 seconds ---
+Action: wait
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.10928691641368056, State(d4): 0.10928691641368056, State(t5): 0.24885635287614505, State(d5): 0.24735721822026466, State(t6): 0.1433329019408275, State(d6): 0.1399603630716316, State(t7): 0.0019193310637700485, State(terminate): 0.0}
+Action: wait
+Reward: 0.0
+>> Observation: notdoor
+--- 13.542766809463501 seconds ---
+Action 0: wait
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.10296784743481409, State(d4): 0.0012712079930223964, State(t5): 0.34887597141836874, State(d5): 0.002894657432671026, State(t6): 0.3939950394468895, State(d6): 0.001667225470252784, State(t7): 0.14832805080398156, State(terminate): 0.0}
+Action: stop
+Reward: 0.0
+>> Observation: notdoor
+--- 13.477274417877197 seconds ---
+Action 1: stop
+True state: terminate
+Belief: {State(initial): 0.0, State(t1): 0.0, State(d1): 0.0, State(t2): 0.0, State(d2): 0.0, State(t3): 0.0, State(d3): 0.0, State(tr): 0.0, State(rotate): 0.0, State(t4): 0.0, State(d4): 0.0, State(t5): 0.0, State(d5): 0.0, State(t6): 0.0, State(d6): 0.0, State(t7): 0.0, State(terminate): 1.0}
+Action: stop
+Reward: 0.0
+>> Observation: notdoor
+--- 13.522308826446533 seconds ---
+Action 2: stop
