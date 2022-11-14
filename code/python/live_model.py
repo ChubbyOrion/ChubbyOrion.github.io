@@ -2,17 +2,27 @@ import subprocess
 import pickle
 import pomegranate
 import numpy
+import pomdp_py
+import pomDP
+import ros
 
 
-class callb:
+class stateHandler:
     def __init__(self, callback):
         self.val = False
         self.callback = callback
 
+
+
     def toggle(self):
+        #val has gone from false to true
         if self.val:
             self.callback()
         self.val = not self.val
+
+
+
+def callback():
 
 
 def direction(val, rng):
@@ -38,7 +48,7 @@ def main():
 
     states = []
     positives = [0] * 15
-    DOOR = False
+    DOOR = stateHandler(callback=lambda : print("Callback"))
     while True:
         line = proc.stderr.readline()
         if not line: break
@@ -59,9 +69,9 @@ def main():
             else:
                 positives.append(0)
             if sum(positives) / len(positives) > .7:
-                DOOR = True
+                DOOR.toggle()
             if sum(positives) / len(positives) < .3:
-                DOOR = False
+                DOOR.toggle()
 
             positives.pop(0)
             states.pop(0)
