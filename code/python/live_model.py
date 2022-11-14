@@ -12,13 +12,17 @@ class stateHandler:
     def __init__(self, callback):
         self.val = False
         self.callback = callback
+        self.proc = False
         self.problem, self.planner = pomDP.main()
 
     def start(self):
         self.proc = ros.wall_follow(3600, 0, 3600, 0, ros.RIGHT, 0, 10000000)
 
     def stop(self):
-        self.proc.send_signal(signal.SIGINT)
+        if self.proc:
+            self.proc.send_signal(signal.SIGINT)
+            self.proc = False
+
 
     def rotate(self):
         ros.rotate(30,0,1.57,0,10000000)
@@ -35,6 +39,7 @@ class stateHandler:
             self.stop()
         else:
             self.rotate()
+        return action
 
 
 
@@ -71,7 +76,7 @@ def main():
     states = []
     positives = [0] * 15
     DOOR = stateHandler(callback=lambda: print("Callback"))
-
+    print(DOOR.handle(False))
     while True:
         line = proc.stdout.readline()
         if not line: break
