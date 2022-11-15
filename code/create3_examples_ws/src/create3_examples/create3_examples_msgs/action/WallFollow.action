@@ -1,0 +1,28 @@
+# Request
+
+# The robot will follow the wall for the provided runtime along the wall provided side.
+
+int8 FOLLOW_RIGHT = -1
+int8 FOLLOW_LEFT = 1
+
+builtin_interfaces/Duration max_runtime
+builtin_interfaces/Duration max_wall_follow_runtime
+int8 wall_follow_side
+builtin_interfaces/Duration print_duration
+---
+# Result
+bool success
+bool is_docked
+builtin_interfaces/Duration duration
+---
+# Feedback
+
+int32 DOCK = 0
+int32 DRIVE_STRAIGHT = 1
+int32 ROTATE = 2
+int32 SPIRAL = 3
+int32 UNDOCK = 4
+int32 WALL_FOLLOW = 5
+int32 WAIT = 6
+
+int32 current_behavior

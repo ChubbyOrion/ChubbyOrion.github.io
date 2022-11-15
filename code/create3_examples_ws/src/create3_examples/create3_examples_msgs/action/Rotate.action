@@ -1,0 +1,27 @@
+# Request
+
+# The robot will rotate to the provided orientation
+
+builtin_interfaces/Duration max_runtime
+# Rotate for relative angle (radians) from current robot position.  Angles greater than 2 PI will cause the robot to rotate in multiple circles
+float32 angle
+# Max rotation speed (positive rad/s), will cap negative angle to negative speed
+float32 max_rotation_speed 1.9
+builtin_interfaces/Duration print_duration
+---
+# Result
+bool success
+bool is_docked
+builtin_interfaces/Duration duration
+---
+# Feedback
+
+int32 DOCK = 0
+int32 DRIVE_STRAIGHT = 1
+int32 ROTATE = 2
+int32 SPIRAL = 3
+int32 UNDOCK = 4
+int32 WALL_FOLLOW = 5
+int32 WAIT = 6
+
+int32 current_behavior

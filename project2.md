@@ -20,7 +20,7 @@
 * Terminate
 
 ## Actions:
-* Start        &emsp;&emsp;&emsp;&emsp; (Strat moving)
+* Start        &emsp;&emsp;&emsp;&emsp; (Start moving)
 * Stop         &emsp;&emsp;&emsp;&emsp; (Stop moving)
 * Rotate       &emsp;&emsp;&emsp; (Rotate 180 degrees)
 * Wait         &emsp;&emsp;&emsp;&emsp; (Wait for one of the other instructions)
@@ -29,41 +29,70 @@
 * Door :)      &emsp;&emsp;&emsp;&emsp; (Robot senses a door)
 * Not Door     &emsp;&emsp;&emsp; (Robot does not sense a door)
 
-## Expected Belief: 
+## Expected Belief:
+We expected a belief with a skew that moved from left to right as we sensed doors. That is it starts with a high probability in the Initial state then moves to T1 when waiting to see a door, then D1 when the first door is seen, then T2 when waiting to see the second door etc. The TR state would be when waiting to finish passing the door and then move to the rotate state to turn around and go back.
 
-State -> Action -> Observation  
-Initial -> Start -> Not Door ->   
-T1 -> Wait -> Door :) ->  
-D1 -> Wait -> Not Door ->  
-T2 -> Wait -> Door :) ->  
-D2 -> Wait -> Not Door ->  
-T3 -> Wait -> Door :) ->  
-D3 -> Wait -> Not Door ->  
-TR -> Stop -> Not Door ->  
-Rotate -> Rotate -> Not Door ->  
-Rotate -> Start -> Not Door ->  
-T4 -> Wait -> Door :) ->  
-D4 -> Wait -> Not Door ->  
-T5 -> Wait -> Door :) ->  
-D5 -> Wait -> Not Door ->  
-T6 -> Wait -> Door :) ->  
-D6 -> Wait -> Not Door ->  
-T7 -> Wait -> Not Door ->   
-Terminate -> Stop -> Not Door
+## Corrected Expected Belief
+When we ran the POMDP with fixed probabilities and fixed data, we corrected our expected belief. Instead of simply a moving skewness with a single peak, we had multiple peaks. This can be seen in the following graphs:
 
-The expected behavior was for the probability to be highest in the state the robot is in, and that each new state would in turn have the current highest probability.
-This would create a wave effect in the probability graph. It would start out looking like this:   
-```
-- - -
-     \
-      \
-       \
-        \
-          - - -
-```
-Then this "wave" would continually move forward.
+![code/pomdp/State_0.png](code/podmp/State_0.png)
+![code/pomdp/State_1.png](code/podmp/State_1.png)
+![code/pomdp/State_2.png](code/podmp/State_2.png)
+![code/pomdp/State_3.png](code/podmp/State_3.png)
+![code/pomdp/State_4.png](code/podmp/State_4.png)
+![code/pomdp/State_5.png](code/podmp/State_5.png)
+![code/pomdp/State_6.png](code/podmp/State_6.png)
+![code/pomdp/State_7.png](code/podmp/State_7.png)
+![code/pomdp/State_8.png](code/podmp/State_8.png)
+![code/pomdp/State_9.png](code/podmp/State_9.png)
+![code/pomdp/State_10.png](code/podmp/State_10.png)
+![code/pomdp/State_11.png](code/podmp/State_11.png)
+![code/pomdp/State_12.png](code/podmp/State_12.png)
+![code/pomdp/State_13.png](code/podmp/State_13.png)
+![code/pomdp/State_14.png](code/podmp/State_14.png)
+![code/pomdp/State_15.png](code/podmp/State_15.png)
+![code/pomdp/State_16.png](code/podmp/State_16.png)
+![code/pomdp/State_17.png](code/podmp/State_17.png)
+![code/pomdp/State_18.png](code/podmp/State_18.png)
+![code/pomdp/State_19.png](code/podmp/State_19.png)
+![code/pomdp/State_20.png](code/podmp/State_20.png)
+![code/pomdp/State_21.png](code/podmp/State_21.png)
 
-What we found instead was like this: ~~~~~~~
+These were generated from the following input:
+Action -> Observation  
+0: Action: start, Observation: notdoor
+1: Action: wait, Observation: notdoor
+2: Action: wait, Observation: door
+3: Action: wait, Observation: notdoor
+4: Action: wait, Observation: notdoor
+5: Action: wait, Observation: door
+6: Action: wait, Observation: notdoor
+7: Action: wait, Observation: notdoor
+8: Action: wait, Observation: door
+9: Action: wait, Observation: notdoor
+10: Action: stop, Observation: notdoor
+11: Action: start, Observation: notdoor
+12: Action: wait, Observation: door
+13: Action: wait, Obseration: notdoor
+14: Action: wait, Observation: notdoor
+15: Action: wait, Observation: door
+16: Action: wait, Observation: notdoor
+17: Action: wait, Observation: notdoor
+18: Action: wait, Observation: door
+19: Action: wait, Observation: notdoor
+20: Action: stop, Observation: notdoor
+21: Action: stop, Observation: notdoor
 
+As we can see, after we see the first door instead of having one peak on the next transition state, t2, the probability is actually split between t1 and t2 which makes sense in hindsight.
+
+Our next step is to run tests to generate the CPT tables from actual data instead of hard coding numbers.
+
+# Code adaptions
+
+## ROS
+The ROS code was updated to start two nodes: one node listens for requests to rotate and the second node listens for requests to perform wall following. A Python API was made that allowed that offered an interface to make a request to perform a rotation by the provided angle or to perform a wall follow for a set amount of time.
+
+## Bayesian
+Blake please fill in this part with what you need to adapt the Bayesian network
 
 
