@@ -41,6 +41,8 @@
       The data we gathered was of the robot heading toward the door with the wall on its left. 
       The network at school proved a challenge when connecting to the robot via ROS.
       We ended up having to take the robot home and improvised doors to use for training.
+	    
+	    After further iterations, we found that adding an extra layer on top of the existing bayesian network dramatically reduced our false positive rate. We created a second bayesian network that kept track of the results of the last m results of the first, and that network then determined the presence of the door. 
 
 	  <!--Blake, update this section please-->
     </p>
@@ -87,11 +89,11 @@
           </li>
 		</ul>
 	  </li>
-	  <li>model_50n_5r.pxl - model data.</li><!--Blake does this need to be updated?-->
-	  <li>Model_50.png - picture represenation of the model.</li><!--Blake is this still up to date?-->
+	  <li>code/python/ModelAbs - model data.</li>
+	  <li>Model_50.png - picture represenation of the model.</li><
 	  <li>README.md - overall readme</li>
 	  <li>style.css - style sheet for this page</li>
-	  <li>Tables.csv - final CPT tables</li> <!--Blake do you have new CPT tables?-->
+	  <li>Tables.csv - final CPT tables</li> 
 	</ul>	
     
     <h3>Links</h3>
