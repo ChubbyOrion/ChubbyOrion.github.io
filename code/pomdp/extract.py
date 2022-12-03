@@ -7,18 +7,18 @@ def plot_state(state, state_num, action, ob):
     fig, ax = plt.subplots()
     keys = list(state.keys())
     values = list(state.values())
-    print("Keys: {}".format(keys))
-    print("Values: {}".format(values))
+    #print("Keys: {}".format(keys))
+    #print("Values: {}".format(values))
 
     # creating the bar plot
     ax.bar(keys, values, color ='maroon', width = 0.4)
-    ax.text(0.5, 1.1, "Action: {}".format(action))
-    ax.text(0.5, 1.13, "Observation: {}".format(ob))
+    ax.text(0.5, 0.5, "Action: {}".format(action))
+    ax.text(0.5, 0.55, "Observation: {}".format(ob))
 
     ax.set_xlabel("States")
     ax.set_ylabel("Probability")
     ax.set_title("Probability vs States")
-    plt.savefig("State_{}.png".format(state_num))
+    plt.savefig("State_{}.png".format(state_num), dpi=300)
     plt.close()
 
 def main(data_file):
@@ -30,11 +30,10 @@ def main(data_file):
     actions = []
     obs = []
     with open(data_file) as df:
-        last_run = False
-        while not last_run:
+        while True:
             line = df.readline()
             if not line:
-                last_run = True
+                break
             if line.startswith("True state"):
                 if init_state:
                     init_state = False
@@ -57,7 +56,12 @@ def main(data_file):
             elif "Observation" in line:
                 curr_obs = (line.split(':')[1]).strip()
 
+        states.append(curr_state)
+        actions.append(curr_action)
+        obs.append(curr_obs)
+
     for i in range(0, len(states)):
+        print("{}: Action: {}, Ob: {}".format(i, actions[i], obs[i]))
         plot_state(states[i], i, actions[i], obs[i])
 
 if __name__ == '__main__':

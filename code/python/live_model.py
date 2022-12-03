@@ -9,6 +9,7 @@ import numpy
 
 import ros
 import signal
+import os
 
 
 class stateHandler:
@@ -89,13 +90,18 @@ def main():
     NSTATES = 60
     nabstract = 10
     # Understanding the regular expression is left as an exercise for the reader
-    cmd = "ros2 run data_collection data_collection"
-    cmd = "cat ../door_data/data_left_14.txt ../door_data/data_left_16.txt"
+    cmd = "/bin/bash -c 'source /opt/ros/humble/setup.bash; source /home/dgriessler/Documents/ChubbyOrion.github.io/code/create3_examples_ws/install/local_setup.bash; exec ros2 run data_collection data_collection'"
+    cmd = "/bin/bash -c 'source /opt/ros/humble/setup.bash; source /home/dgriessler/Documents/ChubbyOrion.github.io/code/create3_examples_ws/install/local_setup.bash; exec ros2 topic echo /odom'"
+    # cmd = "cat ../door_data/data_left_14.txt ../door_data/data_left_16.txt"
 
+    env = {}
+    env.update(os.environ)
 
     proc = subprocess.Popen(
         rf""" {cmd}""",
-        stdout=subprocess.PIPE, shell=True, encoding='utf-8')
+        stdout=subprocess.PIPE, shell=True, encoding='utf-8', env=env)
+
+    print(proc.args)
 
     states = []
     predStates = []
@@ -104,8 +110,8 @@ def main():
 
     DOOR.start(ros.LEFT)
     while True:
-
         line = proc.stdout.readline()
+        print(line)
         if not line: break
         line = line.split(",")
         try:

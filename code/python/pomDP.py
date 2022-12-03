@@ -447,7 +447,7 @@ def run_planner(problem, planner, door, debug_tree=False):
 def main():
     problem = ProjectTwo.create()
 
-    vi = pomdp_py.ValueIteration(horizon=3, discount_factor=0.95)
+    vi = pomdp_py.ValueIteration(horizon=1, discount_factor=0.95)
     return problem, vi
 
 if __name__ == '__main__':
