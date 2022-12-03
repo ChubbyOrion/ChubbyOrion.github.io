@@ -1,11 +1,14 @@
-FROM python:3.9
+FROM osrf/ros:galactic-desktop
 
-RUN pip install pomegranate matplotlib
+RUN apt update && apt upgrade -y
+RUN ./ros_entrypoint.sh
+WORKDIR /home
 
-Workdir /root
-
-COPY bayesian.py /root
-COPY door_data /root/door_data
+RUN git clone https://github.com/iRobotEducation/create3_examples.git
 
 
-ENTRYPOINT /bin/bash
+
+RUN rosdep install --from-path create3_examples/ --ignore-src -yi
+RUN /bin/bash -c "source /opt/ros/galactic/setup.bash; colcon build; apt install -y python3-pip; pip install pomegranate numpy data-collection;"
+
+ENTRYPOINT /bin/bash -c "source /opt/ros/galactic/setup.bash; source /home/install/local_setup.bash; exec /bin/bash"
