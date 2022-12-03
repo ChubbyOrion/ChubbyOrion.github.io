@@ -5,8 +5,6 @@ import time
 import pomegranate
 import numpy
 
-
-
 import ros
 import signal
 import os
@@ -47,7 +45,7 @@ class stateHandler:
     def toggle(self, val):
 
         # val has gone from false to true
-        if val and not self.val :
+        if val and not self.val:
             print("Setting true")
             self.val = True
             self.handle()
@@ -56,7 +54,7 @@ class stateHandler:
             self.val = False
 
 
-def direction(val, rng, diff = 5):
+def direction(val, rng, diff=5):
     abr = abs(rng)
     abv = abs(val)
 
@@ -74,7 +72,6 @@ def direction(val, rng, diff = 5):
 
 
 def main():
-
     with open("ModelBayes", 'rb') as inf:
         di = pickle.load(inf)
 
@@ -85,21 +82,25 @@ def main():
 
     abstract_model = pomegranate.BayesianNetwork.from_json(di2)
 
-    #bayes_model, abstract_model =  abstract_bayesian.build_model(10, 60, .02)
+    # bayes_model, abstract_model =  abstract_bayesian.build_model(10, 60, .02)
 
     NSTATES = 60
     nabstract = 10
     # Understanding the regular expression is left as an exercise for the reader
-    cmd = "/bin/bash -c 'source /opt/ros/humble/setup.bash; source /home/dgriessler/Documents/ChubbyOrion.github.io/code/create3_examples_ws/install/local_setup.bash; exec ros2 run data_collection data_collection'"
-    cmd = "/bin/bash -c 'source /opt/ros/humble/setup.bash; source /home/dgriessler/Documents/ChubbyOrion.github.io/code/create3_examples_ws/install/local_setup.bash; exec ros2 topic echo /odom'"
+    cmd = "ros2 run data_collection data_collection"
+
+    #cmd = "ros2 topic echo /odom --field twist.twist.angular.z"
     # cmd = "cat ../door_data/data_left_14.txt ../door_data/data_left_16.txt"
 
     env = {}
     env.update(os.environ)
 
     proc = subprocess.Popen(
-        rf""" {cmd}""",
-        stdout=subprocess.PIPE, shell=True, encoding='utf-8', env=env)
+        ["script", "-q", "-c"] + [cmd],
+        stdout=subprocess.PIPE, encoding='utf-8',
+        env=env,
+        stdin=subprocess.PIPE,
+        universal_newlines=True)
 
     print(proc.args)
 
@@ -111,17 +112,16 @@ def main():
     DOOR.start(ros.LEFT)
     while True:
         line = proc.stdout.readline()
-        print(line)
+        print(line.strip())
         if not line: break
-        line = line.split(",")
-        try:
-            z = line[64]
-        except IndexError as e:
+
+        if "---" in line:
             continue
+        z = line
         states.append(direction(float(z), .02))
         if len(states) == NSTATES:
             bayes_predict = "Apple" if numpy.char.equal(bayes_model.predict([states[:NSTATES] + [None]])[-1][-1],
-                                                     "True") else "Orange"
+                                                        "True") else "Orange"
 
             predStates.append(bayes_predict)
             if len(predStates) >= nabstract:
@@ -134,7 +134,6 @@ def main():
                     # If we have had a lot of positives recently
                 else:
                     positives.append(0)
-
 
                 if sum(positives) / 15 > .7:
                     DOOR.toggle(True)
